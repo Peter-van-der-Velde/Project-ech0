@@ -207,6 +207,18 @@ void executeCommand(char cmd)
               apaState2 = 0;
             pinChange = true;
             break;
+         case 'k':
+            apaState0 = 1;
+            apaState1 = 1;
+            apaState2 = 1;
+            pinChange = true;
+            break;
+         case 'l':
+            apaState0 = 0;
+            apaState1 = 0;
+            apaState2 = 0;
+            pinChange = true;
+            break;
          case 'i':    
             digitalWrite(infoPin, HIGH);
             break;
