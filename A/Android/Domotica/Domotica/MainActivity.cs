@@ -56,7 +56,7 @@ namespace Domotica
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
         EditText editTextIPAddress, editTextIPPort;
-        Button button2, button3;
+        Button button2, button3, button4, button5;
 
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
@@ -82,6 +82,8 @@ namespace Domotica
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
             button2 = FindViewById<Button>(Resource.Id.button2);
             button3 = FindViewById<Button>(Resource.Id.button3);
+            button4 = FindViewById<Button>(Resource.Id.button4);
+            button5 = FindViewById<Button>(Resource.Id.button5);
 
             UpdateConnectionState(4, "Disconnected");
 
@@ -151,6 +153,22 @@ namespace Domotica
                 button3.Click += (sender, e) =>
                 {
                     socket.Send(Encoding.ASCII.GetBytes("j"));                 // Send toggle-command to the Arduino
+                };
+            }
+
+            if (button4 != null)
+            {
+                button4.Click += (sender, e) =>
+                {
+                    socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
+                };
+            }
+
+            if (button5 != null)
+            {
+                button3.Click += (sender, e) =>
+                {
+                    socket.Send(Encoding.ASCII.GetBytes("l"));                 // Send toggle-command to the Arduino
                 };
             }
         }

@@ -179,4 +179,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="159.5dp"
         android:layout_height="wrap_content" />
+    <Button
+        android:text="All Off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4" />
+    <Button
+        android:text="All On"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5" />
 </LinearLayout>
