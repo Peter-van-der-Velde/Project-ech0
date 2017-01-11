@@ -166,7 +166,7 @@ namespace Domotica
 
             if (button5 != null)
             {
-                button3.Click += (sender, e) =>
+                button5.Click += (sender, e) =>
                 {
                     socket.Send(Encoding.ASCII.GetBytes("l"));                 // Send toggle-command to the Arduino
                 };
