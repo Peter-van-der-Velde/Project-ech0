@@ -66,11 +66,14 @@ namespace Domotica
 
         protected override void OnCreate(Bundle bundle)
         {
+            //removes titlebar
+            RequestWindowFeature(WindowFeatures.NoTitle);
+
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource (strings are loaded from Recources -> values -> Strings.xml)
             SetContentView(Resource.Layout.Main);
-
+            
             // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
