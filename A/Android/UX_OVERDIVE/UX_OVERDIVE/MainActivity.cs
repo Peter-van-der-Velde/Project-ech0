@@ -18,10 +18,11 @@ namespace UX_OVERDIVE
 
 
             // Set our view from the "main" layout resource
+            this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;//ACTIONBAR is in Tabbed Mode
             SetContentView(Resource.Layout.Main);
 
 
-            this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            
 
             ActionBar.SetDisplayShowHomeEnabled(false);
             ActionBar.SetDisplayShowTitleEnabled(false);
@@ -30,23 +31,19 @@ namespace UX_OVERDIVE
             //Tabs
             var _Sliders = this.ActionBar.NewTab();
             _Sliders.SetIcon(Resource.Drawable.Sliders);
+            _Sliders.TabSelected += (sender, args) =>
+            {
+                // Do something when tab is selected
+            };
+             ActionBar.AddTab(_Sliders);
+
 
             var _Time_Script = this.ActionBar.NewTab();
             _Time_Script.SetIcon(Resource.Drawable.Clock);
-
-
-            _Sliders.TabSelected += delegate (object sender, ActionBar.TabEventArgs e) {
-                e.FragmentTransaction.Add(Resource.Id.fragmentContainer,
-                    new SampleTabFragment());
+            _Time_Script.TabSelected += (sender, args) =>
+            {
+                // Do something when tab is selected
             };
-
-            _Time_Script.TabSelected += delegate (object sender, ActionBar.TabEventArgs e) {
-                e.FragmentTransaction.Add(Resource.Id.fragmentContainer,
-                    new SampleTabFragment());
-            };
-            
-            //adds tabs
-            this.ActionBar.AddTab(_Sliders);
             this.ActionBar.AddTab(_Time_Script);
         }
     }
