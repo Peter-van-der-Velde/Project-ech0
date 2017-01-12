@@ -13,19 +13,25 @@ namespace UX_OVERDIVE
     {
         protected override void OnCreate(Bundle bundle)
         {
+
             base.OnCreate(bundle);
+
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+
             this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
+            ActionBar.SetDisplayShowHomeEnabled(false);
+            ActionBar.SetDisplayShowTitleEnabled(false);
+
+
+            //Tabs
             var _Sliders = this.ActionBar.NewTab();
-            //_Sliders.SetText();
             _Sliders.SetIcon(Resource.Drawable.Sliders);
 
             var _Time_Script = this.ActionBar.NewTab();
-            //_Time.SetText("LEL");
             _Time_Script.SetIcon(Resource.Drawable.Clock);
 
 
@@ -38,7 +44,8 @@ namespace UX_OVERDIVE
                 e.FragmentTransaction.Add(Resource.Id.fragmentContainer,
                     new SampleTabFragment());
             };
-
+            
+            //adds tabs
             this.ActionBar.AddTab(_Sliders);
             this.ActionBar.AddTab(_Time_Script);
         }
