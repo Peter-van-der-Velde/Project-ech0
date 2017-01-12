@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("UX_Proto_OVERDRIVE.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("UX_OVERDIVE.Resource", IsApplication=true)]
 
-namespace UX_Proto_OVERDRIVE
+namespace UX_OVERDIVE
 {
 	
 	
@@ -45,7 +45,22 @@ namespace UX_Proto_OVERDRIVE
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int Clock = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Home = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Icon = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Microphone = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Settings = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Sliders = 2130837509;
 			
 			static Drawable()
 			{
@@ -57,11 +72,33 @@ namespace UX_Proto_OVERDRIVE
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int fragmentContainer = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int sampleTextView = 2131034113;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Tab = 2130903041;
 			
 			static Layout()
 			{
