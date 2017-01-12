@@ -64,6 +64,8 @@ namespace Domotica
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
 
+        bool timer = false; // voor de zetten van de timer
+
         protected override void OnCreate(Bundle bundle)
         {
             //removes titlebar
@@ -182,14 +184,20 @@ namespace Domotica
             {
                 button6.Click += (sender, e) =>
                 {
-                    timerRemote = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
-                    timerRemote.Elapsed += (obj, args) =>
+                    timer = true;
+                };
+            }
+
+            if (timer)
+            {
+                timerRemote = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
+                timerRemote.Elapsed += (obj, args) =>
+                {
+                    if (edittext1.ToString() == DateTime.Now.ToString("h:mm:ss"))
                     {
-                        if (edittext1.ToString() == DateTime.Now.ToString("h:mm:ss"))
-                        {
-                            socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                        }
-                    };
+                        socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
+                        timer = false;
+                    }
                 };
             }
 
