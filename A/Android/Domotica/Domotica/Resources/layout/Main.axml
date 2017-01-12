@@ -147,46 +147,33 @@
     </RelativeLayout>
     <Button
         android:text="remote2 aan/uit"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/button2" />
-    <TextView
-        android:text="remote2"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="146.0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/remote2" />
-    <TextView
-        android:text="@string/change_pin_state_value"
-        android:id="@+id/textViewChangePinStateValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="159.5dp"
-        android:layout_height="wrap_content" />
     <Button
         android:text="remote3 aan/uit"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/button3" />
-    <TextView
-        android:text="remote3"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="146.0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/remote3" />
-    <TextView
-        android:text="@string/change_pin_state_value"
-        android:id="@+id/textViewChangePinStateValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="159.5dp"
-        android:layout_height="wrap_content" />
     <Button
         android:text="All Off"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/button4" />
     <Button
         android:text="All On"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/button5" />
+    <EditText
+        android:inputType="time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1"
+        android:text="00:00:00" />
+    <Button
+        android:text="zet timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button6" />
 </LinearLayout>
