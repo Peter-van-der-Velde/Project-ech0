@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:minWidth="25px"
-        android:minHeight="25px">
-        <Button
-            android:text="Settings"
-            android:layout_width="match_parent"
-            android:layout_height="100px"
-            android:id="@+id/button_settings" />
-    </FrameLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="25px">
+  <FrameLayout
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/frameLayout1" />
 </LinearLayout>
