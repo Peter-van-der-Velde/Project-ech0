@@ -21,10 +21,9 @@ namespace UX_OVERDIVE
     [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        static readonly string Tag = "UX-OVERDRIVE";
-
-        Fragment[] _fragments;
-
+        //variables
+        public static Fragment[] fragments; //makes array of fragments
+        
         protected override void OnCreate(Bundle bundle)
         {
             
@@ -34,49 +33,57 @@ namespace UX_OVERDIVE
 
             // Set our view from the "main" layout resource
             this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;//ACTIONBAR is in Tabbed Mode
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.Main);//sets view to main
 
-            //removes title and icon
+
+
+            //removes title and icon from actionbar
             ActionBar.SetDisplayShowHomeEnabled(false);
             ActionBar.SetDisplayShowTitleEnabled(false);
 
-            _fragments = new Fragment[]
+            //fragments used
+            fragments = new Fragment[]
                          {
-                             new SampleTabFragment2(),
-                             new SampleTabFragment1()
+                             new Sliders(), 
+                             new Clock() 
                          };
 
-            AddTabToActionBar(Resource.String.Hello, Resource.Drawable.Clock);
-            AddTabToActionBar(Resource.String.Hello, Resource.Drawable.Home);
+            AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
+            AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
             //AddTabToActionBar(Resource.String.speakers_tab_label, Resource.Drawable.ic_action_speakers);
             //AddTabToActionBar(Resource.String.sessions_tab_label, Resource.Drawable.ic_action_sessions);
-
-            //int count = 1;
-            //PRESS THINGIES
-            //Button _settingButton = FindViewById<Button>(Resource.Id.button_settings);
-            
-
-            //IF settings is clicked
-            //_settingButton.Click += (sender, args) => { _settingButton.Text = string.Format("lel {0}", aaa++); };
-
         }
-        void AddTabToActionBar(int labelResourceId, int iconResourceId)
+
+
+
+        //variable
+        static readonly string Tag = "UX-OVERDRIVE";
+
+
+        /// <summary>
+        /// Adds Tabs to Actionbar
+        /// </summary>
+        /// <param name="labelResourceId">label string of tab.
+        /// Resource.String.empty returns an empty string/nameless</param>
+        /// <param name="iconResourceId">icon of tab</param>
+        public void AddTabToActionBar(int labelResourceId, int iconResourceId)
         {
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             ActionBar.Tab tab = ActionBar.NewTab()
-                                         .SetText(labelResourceId)
-                                         .SetIcon(iconResourceId);
+                .SetText(labelResourceId)
+                .SetIcon(iconResourceId);
             tab.TabSelected += TabOnTabSelected;
             ActionBar.AddTab(tab);
         }
 
-        void TabOnTabSelected(object sender, ActionBar.TabEventArgs tabEventArgs)
+        //connects the right fragment to the right tab
+        public void TabOnTabSelected(object sender, ActionBar.TabEventArgs tabEventArgs)
         {
             ActionBar.Tab tab = (ActionBar.Tab)sender;
 
             Log.Debug(Tag, "The tab {0} has been selected.", tab.Text);
-            Fragment frag = _fragments[tab.Position];
+            Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
     }
 }
-
