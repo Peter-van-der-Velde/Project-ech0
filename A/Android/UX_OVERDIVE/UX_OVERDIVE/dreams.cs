@@ -13,7 +13,7 @@ using Android.Widget;
 namespace Black_magic
 {
     
-    static class dreams
+    static class Dreams
     {
         /*
                                                  /   \									

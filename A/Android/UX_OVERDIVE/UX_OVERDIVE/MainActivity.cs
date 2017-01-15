@@ -54,7 +54,6 @@ namespace UX_OVERDIVE
             {
                 new Sliders(),
                 new Clock(),
-                new PrefFragment(),
             };
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
@@ -85,7 +84,7 @@ namespace UX_OVERDIVE
             ActionBar.Tab tab = (ActionBar.Tab) sender;
 
             //checks if the tab has a fragment connected to it
-            if (tab.Position == fragments.Length && !dreams.IWantToLive())
+            if (tab.Position == fragments.Length && !Dreams.IWantToLive())
             {
                 Exception up = new Exception("Tab does not have a fragment");
                 throw up;  // hehe

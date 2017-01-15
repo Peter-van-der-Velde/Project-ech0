@@ -30,6 +30,8 @@ namespace UX_OVERDIVE
         private TextView textViewDevice3;
         private TextView textViewAllDevices;
 
+        private Button settingButton;
+
         //here goes the code for each "Tab"
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -40,8 +42,9 @@ namespace UX_OVERDIVE
 
             switchDevice1 = view.FindViewById<Switch>(Resource.Id.switch_dv1);
             textViewDevice1 = view.FindViewById<TextView>(Resource.Id.text_dv1);
+            settingButton = view.FindViewById<Button>(Resource.Id.set_B);
 
-            
+            settingButton.Click += settingButton_Click;
             //code
             switchDevice1.CheckedChange += (obj, args) =>
             {
@@ -55,7 +58,11 @@ namespace UX_OVERDIVE
         }
 
 
-
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(Activity, typeof(PreferencesActivity));
+            this.StartActivity(intent);
+        }
     }
 
 
@@ -71,20 +78,21 @@ namespace UX_OVERDIVE
         //variables
         private int clickCount = 0;
         private Button clicker;
-        private Button settingButton;
+        private ImageButton settingButton;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = inflater.Inflate(Resource.Layout.Timed, container, false);
+
             clicker = view.FindViewById<Button>(Resource.Id.button1);
-            settingButton = view.FindViewById<Button>(Resource.Id.settingbutton2);
+            settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton2);
 
             //sets the text of the button
             clicker.Text = "You clicked the button " + clickCount++ + " times.";
 
-            
+
             clicker.Click += clicker_Click;
             settingButton.Click += settingButton_Click;
 
@@ -98,18 +106,8 @@ namespace UX_OVERDIVE
 
         private void settingButton_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(Activity, typeof(Activity2));
+            Intent intent = new Intent(Activity, typeof(PreferencesActivity));
             this.StartActivity(intent);
-        }
-    }
-
-
-    public class PrefFragment : PreferenceFragment
-    {
-        public override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            //AddPreferencesFromResource(Resource.Xml.preferences);
         }
     }
 }
