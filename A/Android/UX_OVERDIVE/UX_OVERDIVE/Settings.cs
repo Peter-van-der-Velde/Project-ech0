@@ -16,37 +16,9 @@ namespace UX_OVERDIVE
     {
         public void onCreate(Bundle savedInstanceState)
         {
-            // help nothing works
-            // This is hell!
-            // BRACE YOURSELVES!
 
             onCreate(savedInstanceState);
-            //AddPreferencesFromResource(Resource.Xml.preferences);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //FragmentTransaction fragmentTx = this.FragmentManager.BeginTransaction();
-            //PrefFragment preferensesFragment = new PrefFragment();
-
-
-            // DetailsFragment aDifferentDetailsFrag = new DetailsFragment();
-
-            //getFragmentManager().beginTransaction()
-            //    .replace(.id.content, new SettingsFragment())
-            //    .commit();
+            SetContentView(Resource.Layout.preferences); //sets view to preferences
         }
     }
 }

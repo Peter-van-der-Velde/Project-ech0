@@ -24,7 +24,7 @@ namespace Black_magic
                |-|                          ^    (o o)   ^                           | |
                | |                                \Y/                                |-|
                |-|                                                                   | |
-               | |            his class will make all your dreams come true          |-|
+               | |           this class will make all your dreams come true          |-|
                |-|                                                                   | |
                | |                                                                   |-|
                |_|___________________________________________________________________| |

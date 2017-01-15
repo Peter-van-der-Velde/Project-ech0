@@ -29,6 +29,7 @@ namespace UX_OVERDIVE
 
         //variables
         public static Fragment[] fragments; //makes array of fragments, what did you expect?
+        static readonly string Tag = "UX-OVERDRIVE";
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -58,14 +59,9 @@ namespace UX_OVERDIVE
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
-            //AddTabToActionBar(Resource.String.speakers_tab_label, Resource.Drawable.ic_action_speakers);
-            //AddTabToActionBar(Resource.String.sessions_tab_label, Resource.Drawable.ic_action_sessions);
+
         }
 
-
-
-        //variable
-        static readonly string Tag = "UX-OVERDRIVE";
 
 
         /// <summary>
@@ -89,7 +85,7 @@ namespace UX_OVERDIVE
             ActionBar.Tab tab = (ActionBar.Tab) sender;
 
             //checks if the tab has a fragment connected to it
-            if (tab.Position == fragments.Length && dreams.IWantToLive() == false)
+            if (tab.Position == fragments.Length && !dreams.IWantToLive())
             {
                 Exception up = new Exception("Tab does not have a fragment");
                 throw up;  // hehe
