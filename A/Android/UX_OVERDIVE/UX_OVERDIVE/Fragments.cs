@@ -158,7 +158,7 @@ namespace UX_OVERDIVE
         public void UpdateConnectionState(int state, string text)
         {
             // connectButton
-            string butConText = "Connect";  // default text
+            string butConText = "Connecting";  // default text
             bool butConEnabled = true;      // default state
             Color color = Color.Red;        // default color
             // pinButton
@@ -185,8 +185,8 @@ namespace UX_OVERDIVE
                 if (butConText != null)  // text existst
                 {
                     textViewConnectArduino.Text = butConText;
-                    //textViewServerConnect.SetTextColor(color);
-                    //buttonConnect.Enabled = butConEnabled;
+                    textViewConnectArduino.SetTextColor(color);
+                    switchArduinoConnect.Enabled = butConEnabled;
                 }
                 //buttonChangePinState.Enabled = butPinEnabled;
             });
@@ -354,7 +354,7 @@ namespace UX_OVERDIVE
 
         private void settingButton_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(Activity, typeof(PreferencesActivity));
+            Intent intent = new Intent(Activity, typeof(Settings));
             this.StartActivity(intent);
         }
     }

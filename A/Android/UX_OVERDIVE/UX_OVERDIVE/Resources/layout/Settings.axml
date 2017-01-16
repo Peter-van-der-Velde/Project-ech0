@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1"
+        android:layout_gravity="top">
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_column="0"
+                android:padding="3dip"
+                android:text="IP Addres"
+                android:id="@+id/IpAdress"
+                android:layout_marginLeft="40dp" />
+            <EditText
+                android:id="@+id/editTextIPADDRESS"
+                android:layout_width="120dp"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:layout_column="3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_column="0"
+                android:text="PORT:"
+                android:padding="3dip"
+                android:layout_marginLeft="40dp" />
+            <EditText
+                android:id="@+id/editTextPORT"
+                android:layout_width="100dp"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:layout_column="3" />
+        </TableRow>
+    </TableLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="bottom">
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:id="@+id/button3" />
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:id="@+id/button2" />
+    </LinearLayout>
+</FrameLayout>
