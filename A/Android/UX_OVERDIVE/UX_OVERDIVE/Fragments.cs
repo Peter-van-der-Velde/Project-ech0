@@ -23,6 +23,7 @@ namespace UX_OVERDIVE
     /// </summary>
     class Sliders : Fragment
     {
+
         //here go possible variables
         private Switch switchArduinoConnect;
         private Switch switchDevice1;
@@ -36,7 +37,7 @@ namespace UX_OVERDIVE
         private TextView textViewDevice3;
         private TextView textViewAllDevices;
 
-        private Button settingButton;
+        private ImageButton settingButton;
 
         Timer timerClock, timerSockets;                
         Socket socket = null;                          
@@ -45,8 +46,8 @@ namespace UX_OVERDIVE
         int listIndex = 0;
 
         //new var
-        private string IPADDRESS = "192.168.1.100";
-        private string PORT = "53";
+        private string IPADDRESS;
+        private string PORT;
 
         //here goes the code for each "Tab"
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -62,16 +63,25 @@ namespace UX_OVERDIVE
             textViewDevice1 = view.FindViewById<TextView>(Resource.Id.text_dv1);
             textViewConnectArduino = view.FindViewById<TextView>(Resource.Id.textConnectToArduino);
 
-            settingButton = view.FindViewById<Button>(Resource.Id.set_B);
+            settingButton = view.FindViewById<ImageButton>(Resource.Id.set_B);
+
+
+            //loading settings/PREFERENCES!!!
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+            IPADDRESS = pref.GetString("IP", "192.168.100");
+            PORT = pref.GetString("PORT", "53");
+
 
             settingButton.Click += settingButton_Click;
             //code
             switchDevice1.CheckedChange += (obj, args) =>
             {
-                if (switchDevice1.Checked)
-                    textViewDevice1.Text = "ON";
-                if (!switchDevice1.Checked)
-                    textViewDevice1.Text = "OFF";
+                //DOES NOTHING
+
+                //if (switchDevice1.Checked)
+                //    textViewDevice1.Text = IPADDRESS;
+                //if (!switchDevice1.Checked)
+                //    textViewDevice1.Text = PORT;
             };
 
             //commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));

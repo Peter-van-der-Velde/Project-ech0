@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:id="@+id/FL_lel"
+    android:clickable="true">
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:stretchColumns="1"
         android:layout_gravity="top">
         <TableRow
@@ -44,21 +46,27 @@
         </TableRow>
     </TableLayout>
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:gravity="bottom">
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:id="@+id/linearLayout1">
         <Button
-            android:text="Button"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:id="@+id/button3" />
+            android:id="@+id/buttonCancel"
+            android:background="?android:selectableItemBackground" />
         <Button
-            android:text="Button"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:id="@+id/button2" />
+            android:background="?android:selectableItemBackground"
+            android:id="@+id/buttonSave" />
     </LinearLayout>
 </FrameLayout>
