@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "Activity2")]
+    [Activity(Label = "Preferences")]
     public class PreferencesActivity : Activity
     {
         //Variables

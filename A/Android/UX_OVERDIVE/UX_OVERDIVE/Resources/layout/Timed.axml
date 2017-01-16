@@ -20,8 +20,8 @@
             android:id="@+id/button1" />
     </LinearLayout>
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="bottom|right"
         android:layout_margin="15dp"
         android:scaleType="fitCenter"
