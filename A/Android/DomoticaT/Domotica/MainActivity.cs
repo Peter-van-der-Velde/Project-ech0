@@ -3,8 +3,14 @@
 // De besturing heeft betrekking op het aan- en uitschakelen van een Arduino pin, waar een led aan kan hangen of, 
 // t.b.v. het Domotica project, een RF-zender waarmee een klik-aan-klik-uit apparaat bestuurd kan worden.
 //
-// De socket-communicatie werkt in is gebaseerd op een timer, waarbij het opvragen van gegevens van de 
-// Arduino (server) m.b.v. een Timer worden gerealisseerd.
+// De app heeft twee modes die betrekking hebben op de afhandeling van de socket-communicatie: "simple-mode" en "threaded-mode" 
+// Wanneer het statement    //connector = new Connector(this);    wordt uitgecommentarieerd draait de app in "simple-mode",
+// Het opvragen van gegevens van de Arduino (server) wordt dan met een Timer gerealisseerd. (De extra classes Connector.cs, 
+// Receiver.cs en Sender.cs worden dan niet gebruikt.) 
+// Als er een connector wordt aangemaakt draait de app in "threaded mode". De socket-communicatie wordt dan afgehandeld
+// via een Sender- en een Receiver klasse, die worden aangemaakt in de Connector klasse. Deze threaded mode 
+// biedt een generiekere en ook robuustere manier van communicatie, maar is ook moeilijker te begrijpen. 
+// Aanbeveling: start in ieder geval met de simple-mode
 //
 // Werking: De communicatie met de (Arduino) server is gebaseerd op een socket-interface. Het IP- en Port-nummer
 // is instelbaar. Na verbinding kunnen, middels een eenvoudig commando-protocol, opdrachten gegeven worden aan 
@@ -14,7 +20,7 @@
 //
 // Aanbeveling: Bestudeer het protocol in samenhang met de code van de Arduino server.
 // Het default IP- en Port-nummer (zoals dat in het GUI verschijnt) kan aangepast worden in de file "Strings.xml". De
-// ingestelde waarde is gebaseerd op je eigen netwerkomgeving, hier (en in de Arduino-code) is dat een router, die via DHCP
+// ingestelde waarde is gebaseerd op je eigen netwerkomgeving, hier, en in de Arduino-code, is dat een router, die via DHCP
 // in het segment 192.168.1.x IP-adressen uitgeeft.
 // 
 // Resource files:
@@ -25,6 +31,7 @@
 // 
 // Versie 1.2, 16/12/2016
 // S. Oosterhaven
+// W. Dalof (voor de basis van het Threaded interface)
 //
 using System;
 using System.Text;
@@ -56,26 +63,20 @@ namespace Domotica
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
         EditText editTextIPAddress, editTextIPPort;
-        Button button2, button3, button4, button5, button6;
-        EditText edittext1;
 
-        Timer timerClock, timerSockets, timerRemote;             // Timers   
+        Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
+        Connector connector = null;                 // Connector (simple-mode or threaded-mode)
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
 
-        bool timer = false; // voor de zetten van de timer
-
         protected override void OnCreate(Bundle bundle)
         {
-            //removes titlebar
-            RequestWindowFeature(WindowFeatures.NoTitle);
-
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource (strings are loaded from Recources -> values -> Strings.xml)
             SetContentView(Resource.Layout.Main);
-            
+
             // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
@@ -86,12 +87,6 @@ namespace Domotica
             textViewDebugValue = FindViewById<TextView>(Resource.Id.textViewDebugValue);
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
-            button2 = FindViewById<Button>(Resource.Id.button2);
-            button3 = FindViewById<Button>(Resource.Id.button3);
-            button4 = FindViewById<Button>(Resource.Id.button4);
-            button5 = FindViewById<Button>(Resource.Id.button5);
-            button6 = FindViewById<Button>(Resource.Id.button6);
-            edittext1 = FindViewById<EditText>(Resource.Id.editText1);
 
             UpdateConnectionState(4, "Disconnected");
 
@@ -99,13 +94,16 @@ namespace Domotica
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
 
-            this.Title = this.Title + " (timer sockets)";
+            // activation of connector -> threaded sockets otherwise -> simple sockets 
+            // connector = new Connector(this);
+
+            this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
 
             // timer object, running clock
             timerClock = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
             timerClock.Elapsed += (obj, args) =>
             {
-                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss"); });
+                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss"); }); 
             };
 
             // timer object, check Arduino state
@@ -124,7 +122,7 @@ namespace Domotica
                     else timerSockets.Enabled = false;  // If socket broken -> disable timer
                 //});
             };
-            
+
             //Add the "Connect" button handler.
             if (buttonConnect != null)  // if button exists
             {
@@ -133,7 +131,16 @@ namespace Domotica
                     //Validate the user input (IP address and port)
                     if (CheckValidIpAddress(editTextIPAddress.Text) && CheckValidPort(editTextIPPort.Text))
                     {
-                        ConnectSocket(editTextIPAddress.Text, editTextIPPort.Text);
+                        if (connector == null) // -> simple sockets
+                        {
+                            ConnectSocket(editTextIPAddress.Text, editTextIPPort.Text);
+                        }
+                        else // -> threaded sockets
+                        {
+                            //Stop the thread If the Connector thread is already started.
+                            if (connector.CheckStarted()) connector.StopConnector();
+                               connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
+                        }
                     }
                     else UpdateConnectionState(3, "Please check IP");
                 };
@@ -144,63 +151,16 @@ namespace Domotica
             {
                 buttonChangePinState.Click += (sender, e) =>
                 {
-                    socket.Send(Encoding.ASCII.GetBytes("t"));                 // Send toggle-command to the Arduino
-                };
-            }
-            //button2 remote aan/uit
-            if (button2 != null)
-            {
-                button2.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("h"));                 // Send toggle-command to the Arduino
-                };
-            }
-            //button3 remote aan/uit
-            if (button3 != null)
-            {
-                button3.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("j"));                 // Send toggle-command to the Arduino
-                };
-            }
-
-            if (button4 != null)            //turns all remote on
-            {
-                button4.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                };
-            }
-
-            if (button5 != null)            //turns all remotes off
-            {
-                button5.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("l"));                 // Send toggle-command to the Arduino
-                };
-            }
-
-            if (button6 != null)            //turns all remotes on after x time
-            {
-                button6.Click += (sender, e) =>
-                {
-                    timer = true;
-                };
-            }
-
-            if (timer)
-            {
-                timerRemote = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
-                timerRemote.Elapsed += (obj, args) =>
-                {
-                    if (edittext1.ToString() == DateTime.Now.ToString("h:mm:ss"))
+                    if (connector == null) // -> simple sockets
                     {
-                        socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                        timer = false;
+                        socket.Send(Encoding.ASCII.GetBytes("t"));                 // Send toggle-command to the Arduino
+                    }
+                    else // -> threaded sockets
+                    {
+                        if (connector.CheckStarted()) connector.SendMessage("t");  // Send toggle-command to the Arduino
                     }
                 };
             }
-
         }
 
 
@@ -328,12 +288,28 @@ namespace Domotica
         protected override void OnStop()
         {
             base.OnStop();
+
+            if (connector != null)
+            {
+                if (connector.CheckStarted())
+                {
+                    connector.StopConnector();
+                }
+            }
         }
 
         //Close the connection (stop the threads) if the application is destroyed.
         protected override void OnDestroy()
         {
             base.OnDestroy();
+
+            if (connector != null)
+            {
+                if (connector.CheckStarted())
+                {
+                    connector.StopConnector();
+                }
+            }
         }
 
         //Prepare the Screen's standard options menu to be displayed.
@@ -356,6 +332,12 @@ namespace Domotica
                     System.Environment.Exit(0);
                     return true;
                 case Resource.Id.abort:
+
+                    //Stop threads forcibly (for debugging only).
+                    if (connector != null)
+                    {
+                        if (connector.CheckStarted()) connector.Abort();
+                    }
                     return true;
             }
             return base.OnOptionsItemSelected(item);
