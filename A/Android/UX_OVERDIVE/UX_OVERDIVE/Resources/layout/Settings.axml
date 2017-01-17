@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginRight="40dp"
+                android:singleLine="true"
                 android:layout_column="3" />
         </TableRow>
         <TableRow
@@ -42,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginRight="40dp"
+                android:singleLine="true"
                 android:layout_column="3" />
         </TableRow>
     </TableLayout>
