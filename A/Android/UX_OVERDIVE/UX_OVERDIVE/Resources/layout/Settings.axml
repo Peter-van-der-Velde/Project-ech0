@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/FL_lel"
+    android:clickable="true">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_gravity="top">
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_column="0"
+                android:padding="3dip"
+                android:text="IP Addres"
+                android:id="@+id/IpAdress"
+                android:layout_marginLeft="40dp" />
+            <EditText
+                android:id="@+id/editTextIPADDRESS"
+                android:layout_width="120dp"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:singleLine="true"
+                android:layout_column="3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_column="0"
+                android:text="PORT:"
+                android:padding="3dip"
+                android:layout_marginLeft="40dp" />
+            <EditText
+                android:id="@+id/editTextPORT"
+                android:layout_width="100dp"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:singleLine="true"
+                android:layout_column="3" />
+        </TableRow>
+    </TableLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCancel"
+            android:background="?android:selectableItemBackground" />
+        <Button
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:id="@+id/buttonSave" />
+    </LinearLayout>
+</FrameLayout>
