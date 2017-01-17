@@ -105,7 +105,7 @@ namespace Domotica
             timerClock = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
             timerClock.Elapsed += (obj, args) =>
             {
-                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm"); });
+                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("HH:mm"); });
             };
 
             // timer object, check Arduino state
@@ -188,18 +188,17 @@ namespace Domotica
                 };
             }
 
-            if (timer)
+            
+            timerRemote = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
+            timerRemote.Elapsed += (obj, args) =>
             {
-                timerRemote = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
-                timerRemote.Elapsed += (obj, args) =>
+                //if (Convert.ToInt16(edittext1.Text) == DateTime.Now.Minute && Convert.ToInt16(edittext2.Text) == DateTime.Now.Hour && timer == true)
+                if (edittext1.Text == DateTime.Now.ToString("HH:mm") && timer == true)
                 {
-                    if (edittext1.ToString() == DateTime.Now.ToString("h:mm"))
-                    {
-                        socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                        timer = false;
-                    }
-                };
-            }
+                    socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
+                    timer = false;
+                }
+            };
 
         }
 

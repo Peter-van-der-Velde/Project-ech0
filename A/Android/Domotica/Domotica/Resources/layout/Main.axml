@@ -144,13 +144,15 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/textViewSensorValue"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:inputType="time"
+            android:id="@+id/editText1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDebugValue"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
-    <EditText
-        android:inputType="time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText1"
-        android:text="00:00" />
     <Button
         android:text="zet timer"
         android:layout_width="match_parent"
