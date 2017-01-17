@@ -7,12 +7,6 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="400dp">
-        <RadioButton
-            android:text="Useless RadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:id="@+id/radioButton1" />
         <Button
             android:text="Button"
             android:layout_width="match_parent"

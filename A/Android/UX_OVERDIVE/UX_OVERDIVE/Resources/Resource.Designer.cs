@@ -81,11 +81,11 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f06001e
 			public const int IpAdress = 2131099678;
 			
-			// aapt resource value: 0x7f060032
-			public const int abort = 2131099698;
+			// aapt resource value: 0x7f060031
+			public const int abort = 2131099697;
 			
-			// aapt resource value: 0x7f06002f
-			public const int button1 = 2131099695;
+			// aapt resource value: 0x7f06002e
+			public const int button1 = 2131099694;
 			
 			// aapt resource value: 0x7f060017
 			public const int button2 = 2131099671;
@@ -123,8 +123,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f060020
 			public const int editTextPORT = 2131099680;
 			
-			// aapt resource value: 0x7f060031
-			public const int exit = 2131099697;
+			// aapt resource value: 0x7f060030
+			public const int exit = 2131099696;
 			
 			// aapt resource value: 0x7f060005
 			public const int frameLayout1 = 2131099653;
@@ -134,9 +134,6 @@ namespace UX_OVERDIVE
 			
 			// aapt resource value: 0x7f060004
 			public const int progressBar1 = 2131099652;
-			
-			// aapt resource value: 0x7f06002e
-			public const int radioButton1 = 2131099694;
 			
 			// aapt resource value: 0x7f060006
 			public const int relativeLayout1 = 2131099654;
@@ -153,8 +150,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f06002c
 			public const int set_B = 2131099692;
 			
-			// aapt resource value: 0x7f060030
-			public const int settingbutton2 = 2131099696;
+			// aapt resource value: 0x7f06002f
+			public const int settingbutton2 = 2131099695;
 			
 			// aapt resource value: 0x7f060003
 			public const int si_email = 2131099651;
