@@ -21,7 +21,7 @@ using Android.Preferences;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyCustomTheme")]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
@@ -30,6 +30,7 @@ namespace UX_OVERDIVE
         //variables
         public static Fragment[] fragments; //makes array of fragments, what did you expect?
         static readonly string Tag = "UX-OVERDRIVE";
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -49,11 +50,13 @@ namespace UX_OVERDIVE
 
             //ActionBar.Hide();
 
+
+
             //fragments used
             fragments = new Fragment[]
             {
                 new Sliders(),
-                new Clock(),
+                new Home(),
             };
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
@@ -94,5 +97,12 @@ namespace UX_OVERDIVE
             Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
-    }
+
+        public void yourPublicMethod()
+        {
+            //ConnectSocket("192.168.1.105", "53");
+        }
+
+        
+        }
 }
