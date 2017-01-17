@@ -82,7 +82,10 @@ void setup()
    pinMode(RFPin, OUTPUT);
    pinMode(ledPin, OUTPUT);
    pinMode(infoPin, OUTPUT);
-   
+
+   //test timer
+   pinMode(4, OUTPUT);
+
    //Default states
    digitalWrite(switchPin, HIGH);        // Activate pullup resistors (needed for input pin)
    digitalWrite(lowPin, LOW);
@@ -212,6 +215,7 @@ void executeCommand(char cmd)
             apaState1 = 1;
             apaState2 = 1;
             pinChange = true;
+            digitalWrite(4, HIGH);// check voor timer
             break;
          case 'l':
             apaState0 = 0;

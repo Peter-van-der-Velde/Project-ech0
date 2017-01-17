@@ -145,6 +145,17 @@
             android:layout_below="@id/textViewSensorValue"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
+    <EditText
+        android:inputType="time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1"
+        android:text="00:00" />
+    <Button
+        android:text="zet timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button6" />
     <Button
         android:text="remote2 aan/uit"
         android:layout_width="200dp"
@@ -165,15 +176,4 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/button5" />
-    <EditText
-        android:inputType="time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText1"
-        android:text="00:00:00" />
-    <Button
-        android:text="zet timer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button6" />
 </LinearLayout>
