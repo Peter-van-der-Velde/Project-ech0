@@ -21,7 +21,7 @@ using Android.Preferences;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyCustomTheme")]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
