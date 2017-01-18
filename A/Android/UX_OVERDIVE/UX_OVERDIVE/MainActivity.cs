@@ -56,11 +56,13 @@ namespace UX_OVERDIVE
             fragments = new Fragment[]
             {
                 new Sliders(),
+                new Clock(), 
                 new Home(),
             };
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
+            AddTabToActionBar(Resource.String.empty, Resource.Drawable.Home);
 
         }
 
