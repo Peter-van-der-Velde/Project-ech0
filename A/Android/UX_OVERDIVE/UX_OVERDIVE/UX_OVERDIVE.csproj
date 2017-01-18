@@ -52,8 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clock.cs" />
+    <Compile Include="Connector.cs" />
     <Compile Include="Home.cs" />
     <Compile Include="Dreams.cs" />
+    <Compile Include="Receiver.cs" />
+    <Compile Include="Sender.cs" />
     <Compile Include="SlidersFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

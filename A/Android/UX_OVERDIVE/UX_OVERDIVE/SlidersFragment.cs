@@ -21,12 +21,13 @@ namespace UX_OVERDIVE
     /// <summary>
     /// These classes are used for the various views between the tabs.
     /// </summary>
-    class Sliders : Fragment
+    public class Sliders : Fragment
     {
+        public MainActivity mainActivity;
 
         //here go possible variables
-        private Switch switchArduinoConnect;
-        private Switch switchDevice1;
+        public Switch switchArduinoConnect;
+        public Switch switchDevice1;
         private Switch switchDevice2;
         private Switch switchDevice3;
         private Switch switchAllDevices;
@@ -41,6 +42,11 @@ namespace UX_OVERDIVE
 
         private string IPADDRESS;
         private string PORT;
+
+        public Sliders(MainActivity activity)
+        {
+            mainActivity = activity;
+        }
 
         //here goes the code for each "Tab"
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -61,12 +67,19 @@ namespace UX_OVERDIVE
 
             //loading settings/PREFERENCES!!!
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            IPADDRESS = pref.GetString("IP", "192.168.100");
+            IPADDRESS = pref.GetString("IP", "192.168.1.103");
             PORT = pref.GetString("PORT", "53");
 
 
             settingButton.Click += settingButton_Click;
             //code
+
+            switchArduinoConnect.CheckedChange += (obj, args) =>
+            {
+                if (switchArduinoConnect != null)
+                    mainActivity.SwitchConnect(IPADDRESS, PORT);
+            };
+
             switchDevice1.CheckedChange += (obj, args) =>
             {
                 //DOES NOTHING
