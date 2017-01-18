@@ -22,7 +22,7 @@ using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MyCustomTheme")]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
@@ -59,11 +59,13 @@ namespace UX_OVERDIVE
             fragments = new Fragment[]
             {
                 new Sliders(this),
+                new Clock(), 
                 new Home(),
             };
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
+            AddTabToActionBar(Resource.String.empty, Resource.Drawable.Home);
 
             this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
         }
