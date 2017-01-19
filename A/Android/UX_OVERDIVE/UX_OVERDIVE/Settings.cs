@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "Settings")]
+    [Activity(Label = "Settings", Theme = "@style/MyCustomTheme")]
     public class Settings : Activity
     {
         private string IPADDRESS;
