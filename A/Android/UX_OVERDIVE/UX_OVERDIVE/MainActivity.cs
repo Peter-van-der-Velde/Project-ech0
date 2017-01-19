@@ -22,7 +22,7 @@ using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/Tomato", Theme = "@style/MyCustomTheme")]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme")]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
@@ -37,6 +37,8 @@ namespace UX_OVERDIVE
         Connector connector = null;                 // Connector (simple-mode or threaded-mode)
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
+
+        bool device1, device2, device3;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -84,6 +86,43 @@ namespace UX_OVERDIVE
             }
             else
                 UpdateConnectionState(3, "Please check IP");
+        }
+
+        public void SwitchDevice(int device)
+        {
+            switch(device)
+            {
+                case 0:
+                    if (connector.CheckStarted())
+                    {
+                        if (device1 == false)
+                            connector.SendMessage("t");
+                        else
+                            connector.SendMessage("c");
+                        device1 = !device1;
+                    }
+                    break;
+                case 1:
+                    if (connector.CheckStarted())
+                    {
+                        if (device2 == false)
+                            connector.SendMessage("h");
+                        else
+                            connector.SendMessage("d");
+                        device2 = !device1;
+                    }
+                    break;
+                case 2:
+                    if (connector.CheckStarted())
+                    {
+                        if (device3 == false)
+                            connector.SendMessage("j");
+                        else
+                            connector.SendMessage("e");
+                        device3 = !device1;
+                    }
+                    break;
+            }
         }
 
         /// <summary>

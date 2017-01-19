@@ -27,9 +27,9 @@
                 android:gravity="center"
                 android:layout_marginRight="40dp"
                 android:singleLine="true"
-                android:layout_column="3" 
+                android:layout_column="3"
                 android:textColor="@color/text"
-                android:backgroundTint="@color/text"/>
+                android:backgroundTint="@color/text" />
         </TableRow>
         <TableRow
             android:layout_marginTop="30dp">
@@ -47,9 +47,9 @@
                 android:gravity="center"
                 android:layout_marginRight="40dp"
                 android:singleLine="true"
-                android:layout_column="3" 
+                android:layout_column="3"
                 android:textColor="@color/text"
-                android:backgroundTint="@color/text"/>
+                android:backgroundTint="@color/text" />
         </TableRow>
     </TableLayout>
     <LinearLayout

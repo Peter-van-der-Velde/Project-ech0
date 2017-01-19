@@ -32,14 +32,8 @@ namespace UX_OVERDIVE
 
             //clicker.Click += clicker_Click;
             settingButton.Click += settingButton_Click;
-            buttonConnect.Click += buttonConnect_Click;
 
             return view;
-        }
-
-        private void buttonConnect_Click(object sender, EventArgs e)
-        {
-            //((MainActivity)Activity).yourPublicMethod();
         }
 
         private void settingButton_Click(object sender, EventArgs e)

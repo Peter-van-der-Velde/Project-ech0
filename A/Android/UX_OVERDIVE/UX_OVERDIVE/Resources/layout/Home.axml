@@ -4,23 +4,33 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <LinearLayout
-      android:layout_width="fill_parent"
-      android:layout_height="400dp">
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-  </LinearLayout>
-  <ImageButton
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:layout_gravity="bottom|right"
-      android:layout_margin="30dp"
-      android:scaleType="fitCenter"
-      android:adjustViewBounds="true"
-      android:background="?android:selectableItemBackground"
-      android:id="@+id/settingbutton2"
-      android:src="@drawable/Settings" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="400dp">
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button1" />
+    </LinearLayout>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/settingbutton2"
+        android:src="@drawable/Settings" />
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_Add"
+        android:src="@drawable/plus" />
 </FrameLayout>
