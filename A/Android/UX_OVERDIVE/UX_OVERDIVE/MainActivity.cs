@@ -99,6 +99,7 @@ namespace UX_OVERDIVE
                             connector.SendMessage("t");
                         else
                             connector.SendMessage("c");
+                        device1 = !device1;
                     }
                     break;
                 case 1:
@@ -108,6 +109,7 @@ namespace UX_OVERDIVE
                             connector.SendMessage("h");
                         else
                             connector.SendMessage("d");
+                        device2 = !device1;
                     }
                     break;
                 case 2:
@@ -117,6 +119,7 @@ namespace UX_OVERDIVE
                             connector.SendMessage("j");
                         else
                             connector.SendMessage("e");
+                        device3 = !device1;
                     }
                     break;
             }
