@@ -3,114 +3,124 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/backGround">
-  <TableLayout
+    <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:stretchColumns="1">
-    <TableRow
-        android:layout_marginTop="30dp">
-      <TextView
-        android:textColor="@color/text"
-          android:layout_column="0"
-          android:text="Connect to Arduino"
-          android:padding="3dip"
-          android:id="@+id/textConnectToArduino"
-          android:layout_marginLeft="40dp"/>
-      <Switch
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:checked="false"
-          android:id="@+id/switch_Connect"
-          android:layout_column="3"
-          android:gravity="center"
-          android:layout_marginRight="40dp" />
-    </TableRow>
-    <View
-        android:layout_marginTop="30dp"
-        android:layout_height="1dip"
-        android:background="#FF909090" />
-    <TableRow
-        android:layout_marginTop="30dp">
-      <TextView
-        android:textColor="@color/text"
-          android:layout_column="0"
-          android:text="Device #1"
-          android:padding="3dip"
-          android:id="@+id/text_dv1"
-          android:layout_marginLeft="40dp" />
-      <Switch
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:checked="false"
-          android:id="@+id/switch_dv1"
-          android:layout_column="3"
-          android:gravity="center"
-          android:layout_marginRight="40dp" />
-    </TableRow>
-    <TableRow
-        android:layout_marginTop="30dp">
-      <TextView
-        android:textColor="@color/text"
-          android:layout_column="0"
-          android:text="Device #2"
-          android:padding="3dip"
-          android:id="@+id/text_dv2"
-          android:layout_marginLeft="40dp" />
-      <Switch
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:checked="false"
-          android:id="@+id/switch_dv2"
-          android:layout_marginRight="40dp"
-          android:layout_column="3" />
-    </TableRow>
-    <TableRow
-        android:layout_marginTop="30dp">
-      <TextView
-        android:textColor="@color/text"
-          android:text="Device #3"
-          android:padding="3dip"
-          android:id="@+id/text_dv3"
-          android:layout_marginLeft="40dp" />
-      <Switch
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:checked="false"
-          android:id="@+id/switch_dv3"
-          android:layout_marginRight="40dp"
-          android:layout_column="3" />
-    </TableRow>
-    <View
-        android:layout_marginTop="30dp"
-        android:layout_height="1dip"
-        android:background="#FF909090" />
-    <TableRow
-        android:layout_marginTop="30dp">
-      <TextView
-        android:textColor="@color/text"
-          android:text="All devices"
-          android:padding="3dip"
-          android:id="@+id/text_dv1"
-          android:layout_marginRight="40dp"
-          android:layout_marginLeft="40dp" />
-      <Switch
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:checked="false"
-          android:id="@+id/switch_dv1"
-          android:layout_marginRight="40dp"
-          android:layout_marginLeft="0.0dp"
-          android:layout_column="3" />
-    </TableRow>
-  </TableLayout>
-  <ImageButton
-      android:layout_width="30dp"
-      android:layout_height="30dp"
-      android:layout_gravity="bottom|right"
-      android:layout_margin="15dp"
-      android:scaleType="fitCenter"
-      android:adjustViewBounds="true"
-      android:background="?android:selectableItemBackground"
-      android:id="@+id/set_B"
-      android:src="@drawable/Settings" />
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Connect to Arduino"
+                android:padding="3dip"
+                android:id="@+id/textConnectToArduino"
+                android:layout_marginLeft="40dp" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/switch_Connect"
+                android:layout_column="3"
+                android:gravity="center"
+                android:layout_marginRight="40dp" />
+        </TableRow>
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_height="1dip"
+            android:background="#FF909090" />
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Device #1"
+                android:padding="3dip"
+                android:id="@+id/text_dv1"
+                android:layout_marginLeft="40dp" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/switch_dv1"
+                android:layout_column="3"
+                android:gravity="center"
+                android:layout_marginRight="40dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Device #2"
+                android:padding="3dip"
+                android:id="@+id/text_dv2"
+                android:layout_marginLeft="40dp" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/switch_dv2"
+                android:layout_marginRight="40dp"
+                android:layout_column="3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:text="Device #3"
+                android:padding="3dip"
+                android:id="@+id/text_dv3"
+                android:layout_marginLeft="40dp" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/switch_dv3"
+                android:layout_marginRight="40dp"
+                android:layout_column="3" />
+        </TableRow>
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_height="1dip"
+            android:background="#FF909090" />
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:text="All devices"
+                android:padding="3dip"
+                android:id="@+id/text_dv1"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/switch_dv1"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="0.0dp"
+                android:layout_column="3" />
+        </TableRow>
+    </TableLayout>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_B"
+        android:src="@drawable/Settings" />
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_Add"
+        android:src="@drawable/plus" />
 </FrameLayout>

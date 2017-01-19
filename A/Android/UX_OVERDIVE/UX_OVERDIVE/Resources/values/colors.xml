@@ -2,6 +2,6 @@
 <resources>
   <color name="actionBar">#352949</color>
   <color name="backGround">#2c2439</color>
-  <color name="accent">#B455B6</color>
+  <color name="accent">#f93f7e</color>
   <color name="text">#d6d3da</color>
 </resources>

@@ -79,16 +79,22 @@ namespace UX_OVERDIVE
 			public const int Icon = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int Microphone = 2130837507;
+			public const int LOGO = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int Settings = 2130837508;
+			public const int Microphone = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int Sliders = 2130837509;
+			public const int plus = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int Tomato = 2130837510;
+			public const int Settings = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int Sliders = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Tomato = 2130837512;
 			
 			static Drawable()
 			{
@@ -103,140 +109,143 @@ namespace UX_OVERDIVE
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08001a
-			public const int FL_lel = 2131230746;
-			
 			// aapt resource value: 0x7f08001b
-			public const int IpAdress = 2131230747;
+			public const int FL_lel = 2131230747;
 			
-			// aapt resource value: 0x7f08002c
-			public const int abort = 2131230764;
+			// aapt resource value: 0x7f08001c
+			public const int IpAdress = 2131230748;
+			
+			// aapt resource value: 0x7f08002d
+			public const int abort = 2131230765;
 			
 			// aapt resource value: 0x7f080000
 			public const int button1 = 2131230720;
 			
-			// aapt resource value: 0x7f080014
-			public const int button2 = 2131230740;
-			
-			// aapt resource value: 0x7f080016
-			public const int button3 = 2131230742;
-			
-			// aapt resource value: 0x7f080018
-			public const int button4 = 2131230744;
-			
-			// aapt resource value: 0x7f080019
-			public const int button5 = 2131230745;
-			
-			// aapt resource value: 0x7f08001f
-			public const int buttonCancel = 2131230751;
-			
-			// aapt resource value: 0x7f08000d
-			public const int buttonChangePinState = 2131230733;
-			
-			// aapt resource value: 0x7f08000c
-			public const int buttonConnect = 2131230732;
-			
-			// aapt resource value: 0x7f080020
-			public const int buttonSave = 2131230752;
-			
-			// aapt resource value: 0x7f08001c
-			public const int editTextIPADDRESS = 2131230748;
-			
-			// aapt resource value: 0x7f08000a
-			public const int editTextIPAddress = 2131230730;
-			
-			// aapt resource value: 0x7f08000b
-			public const int editTextIPPort = 2131230731;
-			
-			// aapt resource value: 0x7f08001d
-			public const int editTextPORT = 2131230749;
-			
-			// aapt resource value: 0x7f08002b
-			public const int exit = 2131230763;
-			
-			// aapt resource value: 0x7f080002
-			public const int frameLayout1 = 2131230722;
-			
-			// aapt resource value: 0x7f08001e
-			public const int linearLayout1 = 2131230750;
-			
-			// aapt resource value: 0x7f080003
-			public const int relativeLayout1 = 2131230723;
-			
 			// aapt resource value: 0x7f080015
-			public const int remote2 = 2131230741;
+			public const int button2 = 2131230741;
 			
 			// aapt resource value: 0x7f080017
-			public const int remote3 = 2131230743;
+			public const int button3 = 2131230743;
+			
+			// aapt resource value: 0x7f080019
+			public const int button4 = 2131230745;
+			
+			// aapt resource value: 0x7f08001a
+			public const int button5 = 2131230746;
+			
+			// aapt resource value: 0x7f080020
+			public const int buttonCancel = 2131230752;
+			
+			// aapt resource value: 0x7f08000e
+			public const int buttonChangePinState = 2131230734;
+			
+			// aapt resource value: 0x7f08000d
+			public const int buttonConnect = 2131230733;
+			
+			// aapt resource value: 0x7f080021
+			public const int buttonSave = 2131230753;
+			
+			// aapt resource value: 0x7f08001d
+			public const int editTextIPADDRESS = 2131230749;
+			
+			// aapt resource value: 0x7f08000b
+			public const int editTextIPAddress = 2131230731;
+			
+			// aapt resource value: 0x7f08000c
+			public const int editTextIPPort = 2131230732;
+			
+			// aapt resource value: 0x7f08001e
+			public const int editTextPORT = 2131230750;
+			
+			// aapt resource value: 0x7f08002c
+			public const int exit = 2131230764;
+			
+			// aapt resource value: 0x7f080003
+			public const int frameLayout1 = 2131230723;
+			
+			// aapt resource value: 0x7f08001f
+			public const int linearLayout1 = 2131230751;
+			
+			// aapt resource value: 0x7f080004
+			public const int relativeLayout1 = 2131230724;
+			
+			// aapt resource value: 0x7f080016
+			public const int remote2 = 2131230742;
+			
+			// aapt resource value: 0x7f080018
+			public const int remote3 = 2131230744;
+			
+			// aapt resource value: 0x7f08002b
+			public const int sampleTextView = 2131230763;
+			
+			// aapt resource value: 0x7f080002
+			public const int set_Add = 2131230722;
 			
 			// aapt resource value: 0x7f08002a
-			public const int sampleTextView = 2131230762;
-			
-			// aapt resource value: 0x7f080029
-			public const int set_B = 2131230761;
+			public const int set_B = 2131230762;
 			
 			// aapt resource value: 0x7f080001
 			public const int settingbutton2 = 2131230721;
 			
-			// aapt resource value: 0x7f080022
-			public const int switch_Connect = 2131230754;
-			
-			// aapt resource value: 0x7f080024
-			public const int switch_dv1 = 2131230756;
-			
-			// aapt resource value: 0x7f080026
-			public const int switch_dv2 = 2131230758;
-			
-			// aapt resource value: 0x7f080028
-			public const int switch_dv3 = 2131230760;
-			
-			// aapt resource value: 0x7f080021
-			public const int textConnectToArduino = 2131230753;
-			
-			// aapt resource value: 0x7f08000e
-			public const int textViewChangePinState = 2131230734;
-			
-			// aapt resource value: 0x7f08000f
-			public const int textViewChangePinStateValue = 2131230735;
-			
-			// aapt resource value: 0x7f080012
-			public const int textViewDebug = 2131230738;
-			
-			// aapt resource value: 0x7f080013
-			public const int textViewDebugValue = 2131230739;
-			
-			// aapt resource value: 0x7f080008
-			public const int textViewIPAddress = 2131230728;
-			
-			// aapt resource value: 0x7f080009
-			public const int textViewIPPort = 2131230729;
-			
-			// aapt resource value: 0x7f080010
-			public const int textViewSensor = 2131230736;
-			
-			// aapt resource value: 0x7f080011
-			public const int textViewSensorValue = 2131230737;
-			
-			// aapt resource value: 0x7f080006
-			public const int textViewServer = 2131230726;
-			
-			// aapt resource value: 0x7f080007
-			public const int textViewServerConnect = 2131230727;
-			
-			// aapt resource value: 0x7f080004
-			public const int textViewTimerState = 2131230724;
-			
-			// aapt resource value: 0x7f080005
-			public const int textViewTimerStateValue = 2131230725;
-			
 			// aapt resource value: 0x7f080023
-			public const int text_dv1 = 2131230755;
+			public const int switch_Connect = 2131230755;
 			
 			// aapt resource value: 0x7f080025
-			public const int text_dv2 = 2131230757;
+			public const int switch_dv1 = 2131230757;
 			
 			// aapt resource value: 0x7f080027
-			public const int text_dv3 = 2131230759;
+			public const int switch_dv2 = 2131230759;
+			
+			// aapt resource value: 0x7f080029
+			public const int switch_dv3 = 2131230761;
+			
+			// aapt resource value: 0x7f080022
+			public const int textConnectToArduino = 2131230754;
+			
+			// aapt resource value: 0x7f08000f
+			public const int textViewChangePinState = 2131230735;
+			
+			// aapt resource value: 0x7f080010
+			public const int textViewChangePinStateValue = 2131230736;
+			
+			// aapt resource value: 0x7f080013
+			public const int textViewDebug = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public const int textViewDebugValue = 2131230740;
+			
+			// aapt resource value: 0x7f080009
+			public const int textViewIPAddress = 2131230729;
+			
+			// aapt resource value: 0x7f08000a
+			public const int textViewIPPort = 2131230730;
+			
+			// aapt resource value: 0x7f080011
+			public const int textViewSensor = 2131230737;
+			
+			// aapt resource value: 0x7f080012
+			public const int textViewSensorValue = 2131230738;
+			
+			// aapt resource value: 0x7f080007
+			public const int textViewServer = 2131230727;
+			
+			// aapt resource value: 0x7f080008
+			public const int textViewServerConnect = 2131230728;
+			
+			// aapt resource value: 0x7f080005
+			public const int textViewTimerState = 2131230725;
+			
+			// aapt resource value: 0x7f080006
+			public const int textViewTimerStateValue = 2131230726;
+			
+			// aapt resource value: 0x7f080024
+			public const int text_dv1 = 2131230756;
+			
+			// aapt resource value: 0x7f080026
+			public const int text_dv2 = 2131230758;
+			
+			// aapt resource value: 0x7f080028
+			public const int text_dv3 = 2131230760;
 			
 			static Id()
 			{
