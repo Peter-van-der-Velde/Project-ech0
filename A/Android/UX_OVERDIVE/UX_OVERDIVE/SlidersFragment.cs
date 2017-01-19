@@ -57,6 +57,8 @@ namespace UX_OVERDIVE
             var view = inflater.Inflate(Resource.Layout.Sliders, container, false);
 
             switchDevice1 = view.FindViewById<Switch>(Resource.Id.switch_dv1);
+            switchDevice2 = view.FindViewById<Switch>(Resource.Id.switch_dv2);
+            switchDevice3 = view.FindViewById<Switch>(Resource.Id.switch_dv3);
             switchArduinoConnect = view.FindViewById<Switch>(Resource.Id.switch_Connect);
 
             textViewDevice1 = view.FindViewById<TextView>(Resource.Id.text_dv1);
@@ -64,30 +66,22 @@ namespace UX_OVERDIVE
 
             settingButton = view.FindViewById<ImageButton>(Resource.Id.set_B);
 
-
-            //loading settings/PREFERENCES!!!
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            IPADDRESS = pref.GetString("IP", "192.168.1.103");
-            PORT = pref.GetString("PORT", "53");
-
-
             settingButton.Click += settingButton_Click;
             //code
 
             switchArduinoConnect.CheckedChange += (obj, args) =>
             {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+                IPADDRESS = pref.GetString("IP", "192.168.1.102");
+                PORT = pref.GetString("PORT", "53");
+
                 if (switchArduinoConnect != null)
                     mainActivity.SwitchConnect(IPADDRESS, PORT);
             };
 
             switchDevice1.CheckedChange += (obj, args) =>
             {
-                //DOES NOTHING
-
-                //if (switchDevice1.Checked)
-                //    textViewDevice1.Text = IPADDRESS;
-                //if (!switchDevice1.Checked)
-                //    textViewDevice1.Text = PORT;
+                mainActivity.SwitchDevice(1);
             };
 
             return view;
