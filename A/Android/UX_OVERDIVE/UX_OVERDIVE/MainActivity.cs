@@ -90,7 +90,39 @@ namespace UX_OVERDIVE
 
         public void SwitchDevice(int device)
         {
-
+            switch(device)
+            {
+                case 0:
+                    if (connector.CheckStarted())
+                    {
+                        if (device1 == false)
+                            connector.SendMessage("t");
+                        else
+                            connector.SendMessage("c");
+                        device1 = !device1;
+                    }
+                    break;
+                case 1:
+                    if (connector.CheckStarted())
+                    {
+                        if (device2 == false)
+                            connector.SendMessage("h");
+                        else
+                            connector.SendMessage("d");
+                        device2 = !device1;
+                    }
+                    break;
+                case 2:
+                    if (connector.CheckStarted())
+                    {
+                        if (device3 == false)
+                            connector.SendMessage("j");
+                        else
+                            connector.SendMessage("e");
+                        device3 = !device1;
+                    }
+                    break;
+            }
         }
 
         /// <summary>
