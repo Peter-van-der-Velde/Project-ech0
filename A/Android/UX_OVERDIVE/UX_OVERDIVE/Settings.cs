@@ -44,7 +44,7 @@ namespace UX_OVERDIVE
 
             //
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            string wrtIP = pref.GetString("IP", "192.168.100");
+            string wrtIP = pref.GetString("IP", "192.168.1.100");
             string wrtPORT = pref.GetString("PORT", "53");
 
             editTextIP.Text = wrtIP;

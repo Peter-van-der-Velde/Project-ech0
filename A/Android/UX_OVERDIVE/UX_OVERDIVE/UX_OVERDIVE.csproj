@@ -78,9 +78,6 @@
     <AndroidResource Include="Resources\layout\List.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Login.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\Sliders.axml">
       <SubType>Designer</SubType>
     </AndroidResource>

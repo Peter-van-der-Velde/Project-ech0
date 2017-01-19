@@ -38,6 +38,8 @@ namespace UX_OVERDIVE
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
 
+        bool device1, device2, device3;
+
         protected override void OnCreate(Bundle bundle)
         {
             //http://www.cheaprope.co.uk/
@@ -86,6 +88,11 @@ namespace UX_OVERDIVE
                 UpdateConnectionState(3, "Please check IP");
         }
 
+        public void SwitchDevice(int device)
+        {
+
+        }
+
         /// <summary>
         /// Adds Tabs to Actionbar
         /// </summary>
@@ -116,11 +123,6 @@ namespace UX_OVERDIVE
             Log.Debug(Tag, "The tab {0} has been selected.", tab.Text);
             Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
-        }
-
-        public void yourPublicMethod()
-        {
-            //ConnectSocket("192.168.1.105", "53");
         }
 
         //Send command to server and wait for response (blocking)
