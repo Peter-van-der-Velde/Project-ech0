@@ -39,7 +39,7 @@ namespace UX_OVERDIVE
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-            ((MainActivity)Activity).yourPublicMethod();
+            //((MainActivity)Activity).yourPublicMethod();
         }
 
         private void settingButton_Click(object sender, EventArgs e)
