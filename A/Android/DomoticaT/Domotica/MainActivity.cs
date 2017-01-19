@@ -138,8 +138,9 @@ namespace Domotica
                         else // -> threaded sockets
                         {
                             //Stop the thread If the Connector thread is already started.
-                            if (connector.CheckStarted()) connector.StopConnector();
-                               connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
+                            if (connector.CheckStarted())
+                                connector.StopConnector();
+                            connector.StartConnector(editTextIPAddress.Text, editTextIPPort.Text);
                         }
                     }
                     else UpdateConnectionState(3, "Please check IP");
