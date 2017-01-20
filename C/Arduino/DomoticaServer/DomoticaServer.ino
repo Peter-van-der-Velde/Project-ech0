@@ -41,6 +41,8 @@
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
 //#include <RemoteTransmitter.h>    // Remote Control, Action, old model
 //#include <RCSwitch.h>           // Remote Control, Action, new model
+#include <Servo.h>              //libarie voor servo
+#include <NewPing.h>            //libarie voor ultrasone sensor
 
 // Set Ethernet Shield MAC address  (check yours)
 byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
@@ -53,6 +55,15 @@ int ethPort = 53;                                  // Take a free port (check yo
 #define ledPin       8  // output, led used for "connect state": blinking = searching; continuously = connected
 #define infoPin      9  // output, more information
 #define analogPin    0  // sensor value
+#define servo        4  // servo
+
+#define TRIGGER_PIN  1  //ultrasonic sensor
+#define ECHO_PIN     2  //ultrasonic sensor
+#define MAX_DISTANCE 200 //max distance ultrasonic sensor
+
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); //settings for ultrasonic sensor
+
+Servo myservo;  // create servo object to control a servo
 
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
 NewRemoteTransmitter apa3Transmitter(unitCodeApa3, RFPin, 260, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
@@ -67,6 +78,8 @@ int  sensorValue = 0;                    // Variable to store actual sensor valu
 int apaState0 = 0;
 int apaState1 = 0;
 int apaState2 = 0;
+
+int pos = 0;    // variable to store the servo position
 
 void setup()
 {
@@ -83,9 +96,6 @@ void setup()
    pinMode(ledPin, OUTPUT);
    pinMode(infoPin, OUTPUT);
 
-   //test timer
-   pinMode(4, OUTPUT);
-
    //Default states
    digitalWrite(switchPin, HIGH);        // Activate pullup resistors (needed for input pin)
    digitalWrite(lowPin, LOW);
@@ -93,6 +103,8 @@ void setup()
    digitalWrite(RFPin, LOW);
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
+
+   myservo.attach(servo);  // attaches the servo on pin 'servo' to the servo object
 
    //Try to get an IP address from the DHCP server.
    if (Ethernet.begin(mac) == 0)
@@ -132,6 +144,9 @@ void loop()
 
    Serial.println("Application connected");
    digitalWrite(ledPin, LOW);
+
+   //C-opdracht
+   
 
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
@@ -215,7 +230,6 @@ void executeCommand(char cmd)
             apaState1 = 1;
             apaState2 = 1;
             pinChange = true;
-            digitalWrite(4, HIGH);// check voor timer
             break;
          case 'l':
             apaState0 = 0;

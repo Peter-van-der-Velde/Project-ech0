@@ -56,26 +56,20 @@ namespace Domotica
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
         EditText editTextIPAddress, editTextIPPort;
-        Button button2, button3, button4, button5, button6;
-        EditText edittext1;
+        Button button2, button3;
 
-        Timer timerClock, timerSockets, timerRemote;             // Timers   
+        Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
 
-        bool timer = false; // voor de zetten van de timer
-
         protected override void OnCreate(Bundle bundle)
         {
-            //removes titlebar
-            RequestWindowFeature(WindowFeatures.NoTitle);
-
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource (strings are loaded from Recources -> values -> Strings.xml)
             SetContentView(Resource.Layout.Main);
-            
+
             // find and set the controls, so it can be used in the code
             buttonConnect = FindViewById<Button>(Resource.Id.buttonConnect);
             buttonChangePinState = FindViewById<Button>(Resource.Id.buttonChangePinState);
@@ -88,10 +82,6 @@ namespace Domotica
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
             button2 = FindViewById<Button>(Resource.Id.button2);
             button3 = FindViewById<Button>(Resource.Id.button3);
-            button4 = FindViewById<Button>(Resource.Id.button4);
-            button5 = FindViewById<Button>(Resource.Id.button5);
-            button6 = FindViewById<Button>(Resource.Id.button6);
-            edittext1 = FindViewById<EditText>(Resource.Id.editText1);
 
             UpdateConnectionState(4, "Disconnected");
 
@@ -105,7 +95,7 @@ namespace Domotica
             timerClock = new System.Timers.Timer() { Interval = 2000, Enabled = true }; // Interval >= 1000
             timerClock.Elapsed += (obj, args) =>
             {
-                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm"); });
+                RunOnUiThread(() => { textViewTimerStateValue.Text = DateTime.Now.ToString("h:mm:ss"); }); 
             };
 
             // timer object, check Arduino state
@@ -124,7 +114,7 @@ namespace Domotica
                     else timerSockets.Enabled = false;  // If socket broken -> disable timer
                 //});
             };
-            
+
             //Add the "Connect" button handler.
             if (buttonConnect != null)  // if button exists
             {
@@ -163,42 +153,6 @@ namespace Domotica
                     socket.Send(Encoding.ASCII.GetBytes("j"));                 // Send toggle-command to the Arduino
                 };
             }
-
-            if (button4 != null)            //turns all remote on
-            {
-                button4.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                };
-            }
-
-            if (button5 != null)            //turns all remotes off
-            {
-                button5.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("l"));                 // Send toggle-command to the Arduino
-                };
-            }
-
-            if (button6 != null)            //turns all remotes on after x time
-            {
-                button6.Click += (sender, e) =>
-                {
-                    timer = true;
-                };
-            }
-
-            timerRemote = new System.Timers.Timer() { Interval = 1000, Enabled = true }; // Interval >= 1000
-            timerRemote.Elapsed += (obj, args) =>
-            {
-                //if (Convert.ToInt16(edittext1.Text) == DateTime.Now.Minute && Convert.ToInt16(edittext2.Text) == DateTime.Now.Hour && timer == true)
-                if (edittext1.Text == DateTime.Now.ToString("HH:mm") && timer == true)
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("k"));                 // Send toggle-command to the Arduino
-                    timer = false;
-                }
-            };
-
         }
 
 
