@@ -69,7 +69,7 @@ namespace UX_OVERDIVE
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Home);
 
-            this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
+            //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
         }
 
         public void SwitchConnect(string ip, string prt)
@@ -156,6 +156,7 @@ namespace UX_OVERDIVE
             Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
+
 
         //Send command to server and wait for response (blocking)
         //Method should only be called when socket existst
@@ -310,15 +311,15 @@ namespace UX_OVERDIVE
             }
         }
 
-        //Prepare the Screen's standard options menu to be displayed.
-        public override bool OnPrepareOptionsMenu(IMenu menu)
-        {
-            //Prevent menu items from being duplicated.
-            menu.Clear();
+        ////Prepare the Screen's standard options menu to be displayed.
+        //public override bool OnPrepareOptionsMenu(IMenu menu)
+        //{
+        //    //Prevent menu items from being duplicated.
+        //    menu.Clear();
 
-            MenuInflater.Inflate(Resource.Menu.menu, menu);
-            return base.OnPrepareOptionsMenu(menu);
-        }
+        //    MenuInflater.Inflate(Resource.Menu.menu, menu);
+        //    return base.OnPrepareOptionsMenu(menu);
+        //}
 
         //Executes an action when a menu button is pressed.
         public override bool OnOptionsItemSelected(IMenuItem item)

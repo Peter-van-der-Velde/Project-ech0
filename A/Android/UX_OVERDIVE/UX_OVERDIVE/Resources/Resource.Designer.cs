@@ -115,8 +115,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001c
 			public const int IpAdress = 2131230748;
 			
-			// aapt resource value: 0x7f08002d
-			public const int abort = 2131230765;
+			// aapt resource value: 0x7f080030
+			public const int abort = 2131230768;
 			
 			// aapt resource value: 0x7f080000
 			public const int button1 = 2131230720;
@@ -136,6 +136,9 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080020
 			public const int buttonCancel = 2131230752;
 			
+			// aapt resource value: 0x7f08002d
+			public const int buttonCancel2 = 2131230765;
+			
 			// aapt resource value: 0x7f08000e
 			public const int buttonChangePinState = 2131230734;
 			
@@ -144,6 +147,9 @@ namespace UX_OVERDIVE
 			
 			// aapt resource value: 0x7f080021
 			public const int buttonSave = 2131230753;
+			
+			// aapt resource value: 0x7f08002e
+			public const int buttonSave2 = 2131230766;
 			
 			// aapt resource value: 0x7f08001d
 			public const int editTextIPADDRESS = 2131230749;
@@ -157,8 +163,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001e
 			public const int editTextPORT = 2131230750;
 			
-			// aapt resource value: 0x7f08002c
-			public const int exit = 2131230764;
+			// aapt resource value: 0x7f08002f
+			public const int exit = 2131230767;
 			
 			// aapt resource value: 0x7f080003
 			public const int frameLayout1 = 2131230723;
@@ -247,6 +253,9 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080028
 			public const int text_dv3 = 2131230760;
 			
+			// aapt resource value: 0x7f08002c
+			public const int timeDisplay = 2131230764;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -283,6 +292,9 @@ namespace UX_OVERDIVE
 			
 			// aapt resource value: 0x7f030007
 			public const int Timed = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int TimeScript = 2130903048;
 			
 			static Layout()
 			{
