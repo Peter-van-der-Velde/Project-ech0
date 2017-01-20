@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGround">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1">
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:text="00:00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTime"
+                android:textSize="40dp"
+                android:layout_marginLeft="20dp" />
+            <TextView
+                android:text="Device One"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/txtDevice" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchTime"
+                android:layout_marginRight="40dp"
+                android:gravity="center" />
+        </TableRow>
+    </TableLayout>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/settingbutton3"
+        android:src="@drawable/Settings" />
+</FrameLayout>

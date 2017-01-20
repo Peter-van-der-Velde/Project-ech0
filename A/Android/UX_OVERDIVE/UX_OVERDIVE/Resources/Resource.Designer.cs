@@ -118,8 +118,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001c
 			public const int IpAdress = 2131230748;
 			
-			// aapt resource value: 0x7f08003a
-			public const int abort = 2131230778;
+			// aapt resource value: 0x7f08003e
+			public const int abort = 2131230782;
 			
 			// aapt resource value: 0x7f080000
 			public const int button1 = 2131230720;
@@ -139,8 +139,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080020
 			public const int buttonCancel = 2131230752;
 			
-			// aapt resource value: 0x7f080037
-			public const int buttonCancel2 = 2131230775;
+			// aapt resource value: 0x7f08003b
+			public const int buttonCancel2 = 2131230779;
 			
 			// aapt resource value: 0x7f08000e
 			public const int buttonChangePinState = 2131230734;
@@ -151,8 +151,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080021
 			public const int buttonSave = 2131230753;
 			
-			// aapt resource value: 0x7f080038
-			public const int buttonSave2 = 2131230776;
+			// aapt resource value: 0x7f08003c
+			public const int buttonSave2 = 2131230780;
 			
 			// aapt resource value: 0x7f08001d
 			public const int editTextIPADDRESS = 2131230749;
@@ -166,8 +166,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001e
 			public const int editTextPORT = 2131230750;
 			
-			// aapt resource value: 0x7f080039
-			public const int exit = 2131230777;
+			// aapt resource value: 0x7f08003d
+			public const int exit = 2131230781;
 			
 			// aapt resource value: 0x7f080003
 			public const int frameLayout1 = 2131230723;
@@ -202,8 +202,14 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080001
 			public const int settingbutton2 = 2131230721;
 			
-			// aapt resource value: 0x7f080036
-			public const int switchDV3_TIMESCRIPT = 2131230774;
+			// aapt resource value: 0x7f080033
+			public const int settingbutton3 = 2131230771;
+			
+			// aapt resource value: 0x7f08003a
+			public const int switchDV3_TIMESCRIPT = 2131230778;
+			
+			// aapt resource value: 0x7f080032
+			public const int switchTime = 2131230770;
 			
 			// aapt resource value: 0x7f080023
 			public const int switch_Connect = 2131230755;
@@ -211,14 +217,14 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080025
 			public const int switch_dv1 = 2131230757;
 			
-			// aapt resource value: 0x7f080032
-			public const int switch_dv1_TIMESCRIPT = 2131230770;
+			// aapt resource value: 0x7f080036
+			public const int switch_dv1_TIMESCRIPT = 2131230774;
 			
 			// aapt resource value: 0x7f080027
 			public const int switch_dv2 = 2131230759;
 			
-			// aapt resource value: 0x7f080034
-			public const int switch_dv2_TIMESCRIPT = 2131230772;
+			// aapt resource value: 0x7f080038
+			public const int switch_dv2_TIMESCRIPT = 2131230776;
 			
 			// aapt resource value: 0x7f080029
 			public const int switch_dv3 = 2131230761;
@@ -268,23 +274,29 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080024
 			public const int text_dv1 = 2131230756;
 			
-			// aapt resource value: 0x7f080031
-			public const int text_dv1_TIMESCRIPT = 2131230769;
+			// aapt resource value: 0x7f080035
+			public const int text_dv1_TIMESCRIPT = 2131230773;
 			
 			// aapt resource value: 0x7f080026
 			public const int text_dv2 = 2131230758;
 			
-			// aapt resource value: 0x7f080033
-			public const int text_dv2_TIMESCRIPT = 2131230771;
+			// aapt resource value: 0x7f080037
+			public const int text_dv2_TIMESCRIPT = 2131230775;
 			
 			// aapt resource value: 0x7f080028
 			public const int text_dv3 = 2131230760;
 			
-			// aapt resource value: 0x7f080035
-			public const int text_dv3_TIMESCRIPT = 2131230773;
+			// aapt resource value: 0x7f080039
+			public const int text_dv3_TIMESCRIPT = 2131230777;
+			
+			// aapt resource value: 0x7f080034
+			public const int timeDisplay = 2131230772;
+			
+			// aapt resource value: 0x7f080031
+			public const int txtDevice = 2131230769;
 			
 			// aapt resource value: 0x7f080030
-			public const int timeDisplay = 2131230768;
+			public const int txtTime = 2131230768;
 			
 			static Id()
 			{
@@ -327,7 +339,10 @@ namespace UX_OVERDIVE
 			public const int Timed = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int TimeScript = 2130903049;
+			public const int timedItems = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int TimeScript = 2130903050;
 			
 			static Layout()
 			{
