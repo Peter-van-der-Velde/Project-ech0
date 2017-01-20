@@ -22,9 +22,9 @@ namespace UX_OVERDIVE
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
-            var view = inflater.Inflate(Resource.Layout.Timed, container, false);
+            var view = inflater.Inflate(Resource.Layout.timedItems, container, false);
 
-            settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton2);
+            settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton3);
 
             settingButton.Click += settingButton_Click;
 
