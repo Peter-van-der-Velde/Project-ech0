@@ -26,6 +26,66 @@
             android:layout_marginTop="10dp"
             android:text="7:00"
             android:textSize="50dp" />
+      <TableLayout
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:stretchColumns="1">
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_height="1dip"
+            android:background="#FF909090" />
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:layout_column="0"
+              android:text="Device #1"
+              android:padding="3dip"
+              android:id="@+id/text_dv1_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switch_dv1_TIMESCRIPT"
+              android:layout_column="3"
+              android:gravity="center"
+              android:layout_marginRight="40dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:layout_column="0"
+              android:text="Device #2"
+              android:padding="3dip"
+              android:id="@+id/text_dv2_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switch_dv2_TIMESCRIPT"
+              android:layout_marginRight="40dp"
+              android:layout_column="3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:text="Device #3"
+              android:padding="3dip"
+              android:id="@+id/text_dv3_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switchDV3_TIMESCRIPT"
+              android:layout_marginRight="40dp"
+              android:layout_column="3" />
+        </TableRow>
+      </TableLayout>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
