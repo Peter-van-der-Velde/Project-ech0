@@ -28,11 +28,11 @@ namespace UX_OVERDIVE
 
             settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton3); //Leads to timedItems.axml
             //settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton2);
-            set_addButton = view.FindViewById<ImageButton>(Resource.Id.set_Add);
+            //set_addButton = view.FindViewById<ImageButton>(Resource.Id.set_Add);
 
 
             settingButton.Click += settingButton_Click;
-            set_addButton.Click += openTimeScript;
+            //set_addButton.Click += openTimeScript;
 
             return view;
         }
