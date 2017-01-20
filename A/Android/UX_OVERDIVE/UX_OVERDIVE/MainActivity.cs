@@ -22,7 +22,7 @@ using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme")]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
