@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Icu.Util;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -33,7 +34,7 @@ namespace UX_OVERDIVE
 
             ActionBar.SetHomeButtonEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
-
+            
             // Create your application here
             SetContentView(Resource.Layout.TimeScript);
 
@@ -90,7 +91,7 @@ namespace UX_OVERDIVE
         {
             if (id == TIME_DIALOG_ID)
             {
-                return new TimePickerDialog(this, TimePickerCallback, hour, minute, false);
+                return new TimePickerDialog(this, TimePickerCallback, hour, minute, true);
             }
 
             return null;
