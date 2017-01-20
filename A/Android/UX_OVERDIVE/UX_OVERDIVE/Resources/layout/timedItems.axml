@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/switchTime"
                 android:layout_marginRight="40dp"
-                android:gravity="center"/>
+                android:gravity="center" />
         </TableRow>
     </TableLayout>
     <ImageButton

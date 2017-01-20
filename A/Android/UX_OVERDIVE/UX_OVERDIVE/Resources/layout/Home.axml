@@ -24,4 +24,14 @@
         android:background="?android:selectableItemBackground"
         android:id="@+id/settingbutton2"
         android:src="@drawable/Settings" />
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_Add"
+        android:src="@drawable/plus" />
 </FrameLayout>

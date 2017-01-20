@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/FL_lel"
+    android:background="@color/backGround"
+    android:clickable="true">
+    <LinearLayout
+        android:gravity="top"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="vertical">
+        <TextView
+            android:padding="3dip"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="Time"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30.0dp" />
+        <TextView
+            android:id="@+id/timeDisplay"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="7:00"
+            android:textSize="50dp" />
+      <TableLayout
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:stretchColumns="1">
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_height="1dip"
+            android:background="#FF909090" />
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:layout_column="0"
+              android:text="Device #1"
+              android:padding="3dip"
+              android:id="@+id/text_dv1_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switch_dv1_TIMESCRIPT"
+              android:layout_column="3"
+              android:gravity="center"
+              android:layout_marginRight="40dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:layout_column="0"
+              android:text="Device #2"
+              android:padding="3dip"
+              android:id="@+id/text_dv2_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switch_dv2_TIMESCRIPT"
+              android:layout_marginRight="40dp"
+              android:layout_column="3" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+          <TextView
+              android:textColor="@color/text"
+              android:text="Device #3"
+              android:padding="3dip"
+              android:id="@+id/text_dv3_TIMESCRIPT"
+              android:layout_marginLeft="40dp" />
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:id="@+id/switchDV3_TIMESCRIPT"
+              android:layout_marginRight="40dp"
+              android:layout_column="3" />
+        </TableRow>
+      </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:gravity="bottom"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCancel2"
+            android:background="?android:selectableItemBackground" />
+        <Button
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:id="@+id/buttonSave2" />
+    </LinearLayout>
+</FrameLayout>
