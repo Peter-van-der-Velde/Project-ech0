@@ -56,7 +56,8 @@ namespace Domotica
         TextView textViewServerConnect, textViewTimerStateValue;
         public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
         EditText editTextIPAddress, editTextIPPort;
-        Button button2, button3;
+        Button slagboom;
+        CheckBox startcircuit;
 
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
@@ -80,8 +81,8 @@ namespace Domotica
             textViewDebugValue = FindViewById<TextView>(Resource.Id.textViewDebugValue);
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
-            button2 = FindViewById<Button>(Resource.Id.button2);
-            button3 = FindViewById<Button>(Resource.Id.button3);
+            slagboom = FindViewById<Button>(Resource.Id.slagboom);
+            startcircuit = FindViewById<CheckBox>(Resource.Id.startcircuit);
 
             UpdateConnectionState(4, "Disconnected");
 
@@ -138,19 +139,18 @@ namespace Domotica
                 };
             }
             //button2 remote aan/uit
-            if (button2 != null)
+            if (slagboom != null)
             {
-                button2.Click += (sender, e) =>
+                slagboom.Click += (sender, e) =>
                 {
-                    socket.Send(Encoding.ASCII.GetBytes("h"));                 // Send toggle-command to the Arduino
-                };
-            }
-            //button3 remote aan/uit
-            if (button3 != null)
-            {
-                button3.Click += (sender, e) =>
-                {
-                    socket.Send(Encoding.ASCII.GetBytes("j"));                 // Send toggle-command to the Arduino
+                    if (startcircuit.Checked)
+                    {
+                        socket.Send(Encoding.ASCII.GetBytes("y"));                 // Send toggle-command to the Arduino
+                    }
+                    else
+                    {
+                        socket.Send(Encoding.ASCII.GetBytes("z"));                 // Send toggle-command to the Arduino
+                    }
                 };
             }
         }

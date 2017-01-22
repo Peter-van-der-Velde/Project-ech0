@@ -145,38 +145,14 @@
             android:layout_below="@id/textViewSensorValue"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
-    <Button
-        android:text="remote2 aan/uit"
+    <CheckBox
+        android:text="Slagboom start circuit"
+        android:id="@+id/startcircuit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2" />
-    <TextView
-        android:text="remote2"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="146.0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/remote2" />
-    <TextView
-        android:text="@string/change_pin_state_value"
-        android:id="@+id/textViewChangePinStateValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="159.5dp"
         android:layout_height="wrap_content" />
     <Button
-        android:text="remote3 aan/uit"
+        android:text="Activeer slagboom"
+        android:id="@+id/slagboom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3" />
-    <TextView
-        android:text="remote3"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="146.0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/remote3" />
-    <TextView
-        android:text="@string/change_pin_state_value"
-        android:id="@+id/textViewChangePinStateValue"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="159.5dp"
         android:layout_height="wrap_content" />
 </LinearLayout>
