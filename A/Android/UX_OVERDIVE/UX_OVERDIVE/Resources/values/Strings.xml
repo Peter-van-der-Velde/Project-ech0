@@ -21,4 +21,5 @@
   <string name="debug_value">-</string>
   <string name="exit">Exit</string>
   <string name="abort">Abort</string>
+  <string name="messageSpeakNow">Speak now!</string>
 </resources>

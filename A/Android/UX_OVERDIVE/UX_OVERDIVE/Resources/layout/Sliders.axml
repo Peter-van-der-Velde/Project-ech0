@@ -90,14 +90,14 @@
                 android:textColor="@color/text"
                 android:text="All devices"
                 android:padding="3dip"
-                android:id="@+id/text_dv1"
+                android:id="@+id/text_alldv"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:id="@+id/switch_dv1"
+                android:id="@+id/switch_alldv"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="0.0dp"
                 android:layout_column="3" />
