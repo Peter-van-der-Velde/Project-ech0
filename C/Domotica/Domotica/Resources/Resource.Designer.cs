@@ -60,8 +60,11 @@ namespace Domotica
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f060016
+			public const int abort = 2131099670;
+			
 			// aapt resource value: 0x7f060014
-			public const int abort = 2131099668;
+			public const int buttonActiveer = 2131099668;
 			
 			// aapt resource value: 0x7f06000a
 			public const int buttonChangePinState = 2131099658;
@@ -69,23 +72,20 @@ namespace Domotica
 			// aapt resource value: 0x7f060009
 			public const int buttonConnect = 2131099657;
 			
+			// aapt resource value: 0x7f060013
+			public const int checkBoxStartCircuit = 2131099667;
+			
 			// aapt resource value: 0x7f060007
 			public const int editTextIPAddress = 2131099655;
 			
 			// aapt resource value: 0x7f060008
 			public const int editTextIPPort = 2131099656;
 			
-			// aapt resource value: 0x7f060013
-			public const int exit = 2131099667;
+			// aapt resource value: 0x7f060015
+			public const int exit = 2131099669;
 			
 			// aapt resource value: 0x7f060000
 			public const int relativeLayout1 = 2131099648;
-			
-			// aapt resource value: 0x7f060012
-			public const int slagboom = 2131099666;
-			
-			// aapt resource value: 0x7f060011
-			public const int startcircuit = 2131099665;
 			
 			// aapt resource value: 0x7f06000b
 			public const int textViewChangePinState = 2131099659;
@@ -116,6 +116,12 @@ namespace Domotica
 			
 			// aapt resource value: 0x7f060004
 			public const int textViewServerConnect = 2131099652;
+			
+			// aapt resource value: 0x7f060011
+			public const int textViewStand = 2131099665;
+			
+			// aapt resource value: 0x7f060012
+			public const int textViewStandValue = 2131099666;
 			
 			// aapt resource value: 0x7f060001
 			public const int textViewTimerState = 2131099649;

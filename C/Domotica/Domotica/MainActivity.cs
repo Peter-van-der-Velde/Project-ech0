@@ -54,10 +54,11 @@ namespace Domotica
         Button buttonConnect;
         Button buttonChangePinState;
         TextView textViewServerConnect, textViewTimerStateValue;
-        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue;
+        public TextView textViewChangePinStateValue, textViewSensorValue, textViewDebugValue, textViewStandValue;
         EditText editTextIPAddress, editTextIPPort;
-        Button slagboom;
-        CheckBox startcircuit;
+        Button buttonActiveer;
+        CheckBox checkBoxStartCircuit;
+
 
         Timer timerClock, timerSockets;             // Timers   
         Socket socket = null;                       // Socket   
@@ -81,14 +82,16 @@ namespace Domotica
             textViewDebugValue = FindViewById<TextView>(Resource.Id.textViewDebugValue);
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
-            slagboom = FindViewById<Button>(Resource.Id.slagboom);
-            startcircuit = FindViewById<CheckBox>(Resource.Id.startcircuit);
+            textViewStandValue = FindViewById<TextView>(Resource.Id.textViewStandValue);
+            checkBoxStartCircuit = FindViewById<CheckBox>(Resource.Id.checkBoxStartCircuit);
+            buttonActiveer = FindViewById<Button>(Resource.Id.buttonActiveer);
 
             UpdateConnectionState(4, "Disconnected");
 
             // Init commandlist, scheduled by socket timer
             commandList.Add(new Tuple<string, TextView>("s", textViewChangePinStateValue));
             commandList.Add(new Tuple<string, TextView>("a", textViewSensorValue));
+            commandList.Add(new Tuple<string, TextView>("x", textViewStandValue));
 
             this.Title = this.Title + " (timer sockets)";
 
@@ -138,12 +141,13 @@ namespace Domotica
                     socket.Send(Encoding.ASCII.GetBytes("t"));                 // Send toggle-command to the Arduino
                 };
             }
-            //button2 remote aan/uit
-            if (slagboom != null)
+
+            //slagboom
+            if (buttonActiveer != null)
             {
-                slagboom.Click += (sender, e) =>
+                buttonActiveer.Click += (sender, e) =>
                 {
-                    if (startcircuit.Checked)
+                    if (checkBoxStartCircuit.Checked)
                     {
                         socket.Send(Encoding.ASCII.GetBytes("y"));                 // Send toggle-command to the Arduino
                     }
