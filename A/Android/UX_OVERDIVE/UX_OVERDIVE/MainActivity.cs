@@ -89,7 +89,8 @@ namespace UX_OVERDIVE
 
                 if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
                 {
-                    connector.SendMessage("k");
+                    if (Convert.ToInt32(savedMinute) == DateTime.Now.Minute)
+                        connector.SendMessage("k");
                 }
             };
         }

@@ -38,7 +38,7 @@ namespace UX_OVERDIVE
             
             // Create your application here
             SetContentView(Resource.Layout.TimeScript);
-
+            
             // Capture our View elements
             time_display = FindViewById<TextView>(Resource.Id.timeDisplay);
             buttonCancel = FindViewById<Button>(Resource.Id.buttonCancel2);
