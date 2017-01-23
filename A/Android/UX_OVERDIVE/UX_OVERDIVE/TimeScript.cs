@@ -68,7 +68,7 @@ namespace UX_OVERDIVE
                 edit.Apply();
                 this.Finish();
             };
-
+            string rec = Android.Content.PM.PackageManager.FeatureMicrophone;
             // Display the current date
             UpdateDisplay();
         }

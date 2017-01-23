@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button1" />
-    </LinearLayout>
+       </LinearLayout>
     <ImageButton
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -34,4 +34,9 @@
         android:background="?android:selectableItemBackground"
         android:id="@+id/set_Add"
         android:src="@drawable/plus" />
+  <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar1" 
+            android:layout_gravity="center"/>
 </FrameLayout>
