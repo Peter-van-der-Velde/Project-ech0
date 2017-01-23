@@ -144,15 +144,31 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/textViewSensorValue"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:text="Stand Slagboom"
+            android:id="@+id/textViewStand"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDebug"
+            android:layout_alignParentLeft="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:text="-"
+            android:id="@+id/textViewStandValue"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/textViewDebugValue"
+            android:layout_alignParentRight="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
     <CheckBox
-        android:text="Slagboom start circuit"
-        android:id="@+id/startcircuit"
+        android:text="Slagboom start circuit "
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBoxStartCircuit" />
     <Button
-        android:text="Activeer slagboom"
-        android:id="@+id/slagboom"
+        android:text="Activeer Slagboom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonActiveer" />
 </LinearLayout>
