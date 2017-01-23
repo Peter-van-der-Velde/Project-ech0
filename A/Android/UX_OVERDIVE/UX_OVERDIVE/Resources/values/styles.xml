@@ -6,4 +6,10 @@
     <item name="android:colorAccent">@color/accent</item>
     <item name="android:textColor">@color/text</item>
   </style>
+
+  <style name="Theme.Splash" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+    <item name="android:background">@color/actionBar</item>
+    <item name="android:colorAccent">@color/accent</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
 </resources>

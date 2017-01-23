@@ -23,7 +23,7 @@ using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "Ech0", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme",
+    [Activity(Label = "Ech0", MainLauncher = false, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme",
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
