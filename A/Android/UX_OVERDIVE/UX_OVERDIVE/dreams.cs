@@ -15,6 +15,9 @@ namespace Black_magic
     
     static class Dreams
     {
+        //Do not modify without performing the standard dark rituals
+        // and sacrificing the finest goat in the village.
+        
         /*
                                                  /   \									
                 _                        )      ((   ))     (							

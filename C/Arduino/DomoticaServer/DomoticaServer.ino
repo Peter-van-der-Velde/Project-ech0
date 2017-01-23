@@ -41,8 +41,7 @@
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
 //#include <RemoteTransmitter.h>    // Remote Control, Action, old model
 //#include <RCSwitch.h>           // Remote Control, Action, new model
-#include <Servo.h>              //libarie voor servo
-#include <NewPing.h>            //libarie voor ultrasone sensor
+#include <Servo.h>              //libary for the servo
 
 // Set Ethernet Shield MAC address  (check yours)
 byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
@@ -55,15 +54,14 @@ int ethPort = 53;                                  // Take a free port (check yo
 #define ledPin       8  // output, led used for "connect state": blinking = searching; continuously = connected
 #define infoPin      9  // output, more information
 #define analogPin    0  // sensor value
-#define servo        4  // servo
 
-#define TRIGGER_PIN  1  //ultrasonic sensor
-#define ECHO_PIN     2  //ultrasonic sensor
-#define MAX_DISTANCE 200 //max distance ultrasonic sensor
-
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); //settings for ultrasonic sensor
+//======opdracht-C=======================
+#define trigPin 1  // ultrasonic sensor trig
+#define echoPin 2  // ultrasonic sensor echo
+#define servo   4  // servo
 
 Servo myservo;  // create servo object to control a servo
+//==============================================
 
 EthernetServer server(ethPort);              // EthernetServer instance (listening on port <ethPort>).
 NewRemoteTransmitter apa3Transmitter(unitCodeApa3, RFPin, 260, 3);  // APA3 (Gamma) remote, use pin <RFPin> 
@@ -79,7 +77,14 @@ int apaState0 = 0;
 int apaState1 = 0;
 int apaState2 = 0;
 
-int pos = 0;    // variable to store the servo position
+//=====opdracht-C==========================
+int duration, distance1;
+int pos = 170;                // startposition servo
+int detectie_distance = 10;   // distance barrier closes/opens
+int distance = detectie_distance;
+bool up = false;
+bool down = false;
+//==========================================
 
 void setup()
 {
@@ -104,7 +109,16 @@ void setup()
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
 
-   myservo.attach(servo);  // attaches the servo on pin 'servo' to the servo object
+//=======opdracht-C=============
+   //setup for ultrasonic sensor
+   pinMode(trigPin, OUTPUT);
+   pinMode(echoPin, INPUT);
+  
+   //setup for servo
+   myservo.attach(servo);
+   myservo.write(pos);
+   delay(200);
+//=============================
 
    //Try to get an IP address from the DHCP server.
    if (Ethernet.begin(mac) == 0)
@@ -195,6 +209,23 @@ void executeCommand(char cmd)
          // Command protocol
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
+//==========================0pdracht_C============================================ 
+         case 'y':
+            while(!up || !down){     // while barrier hasn't been up and down
+              slagboom(true);       // barrier starts circuit
+            }
+            up = false;
+            down = false;       // set up and down to false so it can start again if button gets clicked
+            break;
+         case 'z':
+            while(!up || !down){     // while barrier hasn't been up and down
+              slagboom(false);       // barrier doesn't start circuit
+            }
+            up = false;
+            down = false;       // set up and down to false so it can start again if button gets clicked
+            break;
+            break;
+//================================================================================
          case 'a': // Report sensor value to the app  
             intToCharBuf(sensorValue, buf, 4);                // convert to charbuffer
             server.write(buf, 4);                             // response is always 4 chars (\n included)
@@ -335,3 +366,43 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
     return getIPComputerNumber(address) - offset;
 }
 
+//==============opdracht-C====================================
+void slagboom(char start){
+  digitalWrite(trigPin, LOW);   // send pulse
+  delayMicroseconds(2); 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10); 
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);  // receive pulse
+  distance1 = (duration/2) / 29.1;    // calculate distance in cm
+  delay(500);
+  if(distance1<=0 == false){       // servo wil stil function correctly if distance 0 or negative
+    distance = distance1;
+  }
+  Serial.print("Distance: ");   // display distance on monitor
+  Serial.println(distance);
+
+  // check if barrier should be up or down
+  if(distance<detectie_distance && start == false){       // barrier down in case the barrier doesn't start the circuit
+    for (pos = pos; pos > 85; pos -= 1) { // goes from pos degrees to 85 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+    down = true;
+    }
+  }
+  else if(distance>detectie_distance && start == true){       // barrier down in case the barrier does start the circuit
+    for (pos = pos; pos > 85; pos -= 1) { // goes from pos degrees to 85 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+    down = true;
+    }
+  }
+  else{                         // barrier up
+    for (pos = pos; pos < 170; pos += 1) { // goes from pos degrees to 170 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15ms for the servo to reach the position
+    up = true;
+    }
+  }
+}
+//====================================================================

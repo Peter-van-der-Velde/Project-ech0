@@ -38,7 +38,7 @@ namespace UX_OVERDIVE
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
         int listIndex = 0;
 
-        bool device1, device2, device3;
+        bool device1, device2, device3, alldevices;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -92,7 +92,7 @@ namespace UX_OVERDIVE
         {
             switch(device)
             {
-                case 0:
+                case 1:
                     if (connector.CheckStarted())
                     {
                         if (device1 == false)
@@ -102,24 +102,41 @@ namespace UX_OVERDIVE
                         device1 = !device1;
                     }
                     break;
-                case 1:
+                case 2:
                     if (connector.CheckStarted())
                     {
                         if (device2 == false)
                             connector.SendMessage("h");
                         else
                             connector.SendMessage("d");
-                        device2 = !device1;
+                        device2 = !device2;
                     }
                     break;
-                case 2:
+                case 3:
                     if (connector.CheckStarted())
                     {
                         if (device3 == false)
                             connector.SendMessage("j");
                         else
                             connector.SendMessage("e");
-                        device3 = !device1;
+                        device3 = !device3;
+                    }
+                    break;
+                case 4:
+                    // And further into the darkness we go.
+                    Exception up = new Exception("Fix dit even yoram");
+                    throw up;  // hehe
+
+                    if (connector.CheckStarted())
+                    {
+                        if (alldevices == false && Dreams.IWantToLive())
+                        {
+                            
+                        }
+                        else
+                        {
+                            
+                        }
                     }
                     break;
             }
