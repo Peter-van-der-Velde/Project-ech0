@@ -28,8 +28,6 @@ namespace UX_OVERDIVE
         private Button buttonCancel;
         private Button buttonSave;
 
-        private Timer timerClock;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -50,19 +48,9 @@ namespace UX_OVERDIVE
             time_display.Click += (o, e) => ShowDialog(TIME_DIALOG_ID);
 
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
-            string Hour = pref.GetString("Hour", DateTime.Now.Hour.ToString()); //lel
-            string Minute = pref.GetString("Minute", DateTime.Now.Minute.ToString());
 
-
-            // Get the current time
-            hour = DateTime.Now.Hour;
-            minute = DateTime.Now.Minute;
-
-            timerClock = new Timer() { Interval = 2000, Enabled = true };
-            timerClock.Elapsed += (obj, args) =>
-            {
-                
-            };
+            hour = Convert.ToInt32(pref.GetString("Hour", DateTime.Now.Hour.ToString()));
+            minute = Convert.ToInt32(pref.GetString("Minute", DateTime.Now.Minute.ToString()));
 
             buttonCancel.Click += (obj, args) =>
             {
@@ -72,8 +60,8 @@ namespace UX_OVERDIVE
             buttonSave.Click += (obj, args) =>
             {
                 ISharedPreferencesEditor edit = pref.Edit();
-                edit.PutString("Hour", Hour);
-                edit.PutString("Minute", Minute);
+                edit.PutString("Hour", Convert.ToString(hour));
+                edit.PutString("Minute", Convert.ToString(minute));
                 edit.Apply();
                 this.Finish();
             };

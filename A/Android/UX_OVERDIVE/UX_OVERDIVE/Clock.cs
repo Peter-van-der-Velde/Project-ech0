@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 using Android.App;
 using Android.Content;
@@ -19,8 +20,12 @@ namespace UX_OVERDIVE
         private ImageButton settingButton;
         private ImageButton set_addButton;
 
+        public TimeScript timeScript;
+        private Clock clock;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            clock = this;
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = inflater.Inflate(Resource.Layout.timedItems, container, false);

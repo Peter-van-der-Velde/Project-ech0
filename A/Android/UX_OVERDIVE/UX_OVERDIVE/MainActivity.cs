@@ -78,6 +78,20 @@ namespace UX_OVERDIVE
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Microphone);
 
             //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
+
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
+
+            Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
+            clockTimer.Elapsed += (obj, args) =>
+            {
+                string savedHour = pref.GetString("Hour", DateTime.Now.Hour.ToString());
+                string savedMinute = pref.GetString("Minute", DateTime.Now.Hour.ToString());
+
+                if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
+                {
+                    connector.SendMessage("k");
+                }
+            };
         }
 
         public void SwitchConnect(string ip, string prt)
