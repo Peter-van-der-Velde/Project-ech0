@@ -44,7 +44,7 @@
 #include <Servo.h>              //libary for the servo
 
 // Set Ethernet Shield MAC address  (check yours)
-byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
+byte mac[] = { 0x41, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
 int ethPort = 53;                                  // Take a free port (check your router)
 
 #define RFPin        3  // output, pin to control the RF-sender (and Click-On Click-Off-device)
@@ -77,14 +77,15 @@ int apaState0 = 0;
 int apaState1 = 0;
 int apaState2 = 0;
 
-//=====opdracht-C==========================
+//=====opdracht-C==========================================
 int duration, distance1;
 int pos = 170;                // startposition servo
 int detectie_distance = 10;   // distance barrier closes/opens
 int distance = detectie_distance;
 bool up = false;
 bool down = false;
-//==========================================
+bool start_barrier;
+//==========================================================
 
 void setup()
 {
@@ -109,7 +110,7 @@ void setup()
    digitalWrite(ledPin, LOW);
    digitalWrite(infoPin, LOW);
 
-//=======opdracht-C=============
+//=======opdracht-C================================
    //setup for ultrasonic sensor
    pinMode(trigPin, OUTPUT);
    pinMode(echoPin, INPUT);
@@ -118,7 +119,7 @@ void setup()
    myservo.attach(servo);
    myservo.write(pos);
    delay(200);
-//=============================
+//================================================
 
    //Try to get an IP address from the DHCP server.
    if (Ethernet.begin(mac) == 0)
@@ -159,14 +160,24 @@ void loop()
    Serial.println("Application connected");
    digitalWrite(ledPin, LOW);
 
-   //C-opdracht
-   
 
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
    {
       checkEvent(switchPin, pinState);          // update pin state
       sensorValue = readSensor(0, 100);         // update sensor value
+         
+//===opdracht-C===========================================================
+     if(start_barrier && (!up || !down))
+     {
+        slagboom(true);
+     }
+  
+     if(!start_barrier && (!up || !down))
+     {
+        slagboom(false);
+     }
+//========================================================================
         
       // Activate pin based op pinState
       if (pinChange) {
@@ -210,20 +221,19 @@ void executeCommand(char cmd)
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
 //==========================0pdracht_C============================================ 
-         case 'y':
-            while(!up || !down){     // while barrier hasn't been up and down
-              slagboom(true);       // barrier starts circuit
-            }
+         case 'y':            // barrier starts circuit
             up = false;
             down = false;       // set up and down to false so it can start again if button gets clicked
+            start_barrier = true;
             break;
-         case 'z':
-            while(!up || !down){     // while barrier hasn't been up and down
-              slagboom(false);       // barrier doesn't start circuit
-            }
+         case 'z':          // barrier don't start circuit
             up = false;
             down = false;       // set up and down to false so it can start again if button gets clicked
+            start_barrier = false;
             break;
+         case 'x': // Report barrier value to the app  
+            if (pos<125) { server.write("LOW\n"); Serial.println("Stand: LOW"); }  // always send 4 chars
+            else { server.write(" UP\n"); Serial.println("Stand: UP"); }
             break;
 //================================================================================
          case 'a': // Report sensor value to the app  
@@ -366,7 +376,7 @@ int getIPComputerNumberOffset(IPAddress address, int offset)
     return getIPComputerNumber(address) - offset;
 }
 
-//==============opdracht-C====================================
+//==============opdracht-C==================================================
 void slagboom(char start){
   digitalWrite(trigPin, LOW);   // send pulse
   delayMicroseconds(2); 
@@ -405,4 +415,4 @@ void slagboom(char start){
     }
   }
 }
-//====================================================================
+//=================================================================================
