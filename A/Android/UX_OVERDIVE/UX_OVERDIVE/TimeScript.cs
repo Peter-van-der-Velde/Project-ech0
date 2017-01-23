@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 using Android.App;
 using Android.Content;
@@ -47,13 +48,9 @@ namespace UX_OVERDIVE
             time_display.Click += (o, e) => ShowDialog(TIME_DIALOG_ID);
 
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
-            string Hour = pref.GetString("Hour", DateTime.Now.Hour.ToString()); //lel
-            string Minute = pref.GetString("Minute", DateTime.Now.Minute.ToString());
 
-
-            // Get the current time
-            hour = DateTime.Now.Hour;
-            minute = DateTime.Now.Minute;
+            hour = Convert.ToInt32(pref.GetString("Hour", DateTime.Now.Hour.ToString()));
+            minute = Convert.ToInt32(pref.GetString("Minute", DateTime.Now.Minute.ToString()));
 
             buttonCancel.Click += (obj, args) =>
             {
@@ -63,8 +60,8 @@ namespace UX_OVERDIVE
             buttonSave.Click += (obj, args) =>
             {
                 ISharedPreferencesEditor edit = pref.Edit();
-                edit.PutString("Hour", Hour);
-                edit.PutString("Minute", Minute);
+                edit.PutString("Hour", Convert.ToString(hour));
+                edit.PutString("Minute", Convert.ToString(minute));
                 edit.Apply();
                 this.Finish();
             };

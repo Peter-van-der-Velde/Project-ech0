@@ -39,12 +39,13 @@
 #include <SPI.h>                  // Ethernet shield uses SPI-interface
 #include <Ethernet.h>             // Ethernet library (use Ethernet2.h for new ethernet shield v2)
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
+#include <AM2320.h> //temp meter
 //#include <RemoteTransmitter.h>    // Remote Control, Action, old model
 //#include <RCSwitch.h>           // Remote Control, Action, new model
 
 // Set Ethernet Shield MAC address  (check yours)
-byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
-int ethPort = 53;                                  // Take a free port (check your router)
+byte mac[] = { 0x41, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
+int ethPort = 60;                                  // Take a free port (check your router)
 
 #define RFPin        3  // output, pin to control the RF-sender (and Click-On Click-Off-device)
 #define lowPin       5  // output, always LOW
@@ -62,11 +63,14 @@ NewRemoteTransmitter apa3Transmitter(unitCodeApa3, RFPin, 260, 3);  // APA3 (Gam
 char actionDevice = 'A';                 // Variable to store Action Device id ('A', 'B', 'C')
 bool pinState = false;                   // Variable to store actual pin state
 bool pinChange = false;                  // Variable to store actual pin change
-int  sensorValue = 0;                    // Variable to store actual sensor value
-
+int Temperatuur = 0;                    // Variable voor temperatuur
+int Vochtigheid = 0;                    // Variable voor vochtigheid
 int apaState0 = 0;
 int apaState1 = 0;
 int apaState2 = 0;
+
+AM2320 th; //temp meter
+
 
 void setup()
 {
@@ -82,10 +86,7 @@ void setup()
    pinMode(RFPin, OUTPUT);
    pinMode(ledPin, OUTPUT);
    pinMode(infoPin, OUTPUT);
-
-   //test timer
-   pinMode(4, OUTPUT);
-
+   
    //Default states
    digitalWrite(switchPin, HIGH);        // Activate pullup resistors (needed for input pin)
    digitalWrite(lowPin, LOW);
@@ -136,9 +137,11 @@ void loop()
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
    {
+      th.Read(); //read temp meter
       checkEvent(switchPin, pinState);          // update pin state
-      sensorValue = readSensor(0, 100);         // update sensor value
-        
+      Temperatuur = th.t*0.90;         // update temp
+      Vochtigheid = th.h*0.90;         //update vocht
+      
       // Activate pin based op pinState
       if (pinChange) {
          switchDefault();
@@ -154,6 +157,8 @@ void loop()
       } 
    }
    Serial.println("Application disonnected");
+
+
 }
 
 // Choose and switch your Kaku device, state is true/false (HIGH/LOW)
@@ -180,42 +185,43 @@ void executeCommand(char cmd)
          // Command protocol
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
-         case 'a': // Report sensor value to the app  
-            intToCharBuf(sensorValue, buf, 4);                // convert to charbuffer
+         case 'a': // Temperatuur naar app 
+            ToCharBuf(Temperatuur, buf, 4);                // convert to charbuffer
             server.write(buf, 4);                             // response is always 4 chars (\n included)
-            Serial.print("Sensor: "); Serial.println(buf);
+            Serial.print("Temp: "); Serial.println(buf);
+            break;
+          case 'b': // Vochtigheid naar app  
+            ToCharBuf(Vochtigheid, buf, 4);                // convert to charbuffer
+            server.write(buf, 4);                             // response is always 4 chars (\n included)
+            Serial.print("Vocht: "); Serial.println(buf);
             break;
          case 's': // Report switch state to the app
             if (pinState) { server.write(" ON\n"); Serial.println("Pin state is ON"); }  // always send 4 chars
             else { server.write("OFF\n"); Serial.println("Pin state is OFF"); }
             break;
-         case 't': // Toggle state; If state is already ON then turn it OFF
-            if(apaState0 == 0)
+         case 't': //aan
               apaState0 = 1;
-            else
+            break;
+         case 'c': // uit
               apaState0 = 0;
-            pinChange = true;
             break;
          case 'h':
-            if(apaState1 == 0)
               apaState1 = 1;
-            else
+            break;
+         case 'd':
               apaState1 = 0;
-            pinChange = true;
             break;
          case 'j':
-            if(apaState2 == 0)
               apaState2 = 1;
-            else
+              break;
+         case 'e':
               apaState2 = 0;
-            pinChange = true;
-            break;
+              break;
          case 'k':
             apaState0 = 1;
             apaState1 = 1;
             apaState2 = 1;
             pinChange = true;
-            digitalWrite(4, HIGH);// check voor timer
             break;
          case 'l':
             apaState0 = 0;
@@ -238,12 +244,12 @@ int readSensor(int pn, int mx)
 }
 
 // Convert int <val> char buffer with length <len>
-void intToCharBuf(int val, char buf[], int len)
+void ToCharBuf(int val, char buf[], int len)
 {
    String s;
    s = String(val);                        // convert tot string
-   if (s.length() == 1) s = "0" + s;       // prefix redundant "0" 
-   if (s.length() == 2) s = "0" + s;  
+   if (s.length() == 1) s = " " + s;       // prefix redundant "0" 
+   if (s.length() == 2) s = " " + s; 
    s = s + "\n";                           // add newline
    s.toCharArray(buf, len);                // convert string to char-buffer
 }

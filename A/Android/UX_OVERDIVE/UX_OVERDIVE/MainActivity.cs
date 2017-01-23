@@ -18,11 +18,13 @@ using Android.Util;
 using System.Threading.Tasks;
 using Android;
 using Android.Preferences;
+using Android.Speech;
 using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme",
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
         /* Welcome to Hell */
@@ -32,13 +34,17 @@ namespace UX_OVERDIVE
         public static Fragment[] fragments; //makes array of fragments, what did you expect?
         static readonly string Tag = "UX-OVERDRIVE";
 
-        Timer timerClock, timerSockets;             // Timers   
-        Socket socket = null;                       // Socket   
-        Connector connector = null;                 // Connector (simple-mode or threaded-mode)
-        List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();  // List for commands and response places on UI
+        Timer timerClock, timerSockets; // Timers   
+        Socket socket = null; // Socket   
+        Connector connector = null; // Connector (simple-mode or threaded-mode)
+        
+        List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();
+        // List for commands and response places on UI
+
         int listIndex = 0;
 
-        bool device1, device2, device3;
+        bool device1, device2, device3, alldevices;
+        private string textSpeech = String.Empty;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -61,15 +67,31 @@ namespace UX_OVERDIVE
             fragments = new Fragment[]
             {
                 new Sliders(this),
-                new Clock(), 
+                new Clock(),
                 new Home(),
+                new SpeechFragment(this),
             };
 
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Sliders);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Clock);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Home);
+            AddTabToActionBar(Resource.String.empty, Resource.Drawable.Microphone);
 
             //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
+
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
+
+            Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
+            clockTimer.Elapsed += (obj, args) =>
+            {
+                string savedHour = pref.GetString("Hour", DateTime.Now.Hour.ToString());
+                string savedMinute = pref.GetString("Minute", DateTime.Now.Hour.ToString());
+
+                if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
+                {
+                    connector.SendMessage("k");
+                }
+            };
         }
 
         public void SwitchConnect(string ip, string prt)
@@ -90,9 +112,9 @@ namespace UX_OVERDIVE
 
         public void SwitchDevice(int device)
         {
-            switch(device)
+            switch (device)
             {
-                case 0:
+                case 1:
                     if (connector.CheckStarted())
                     {
                         if (device1 == false)
@@ -102,24 +124,41 @@ namespace UX_OVERDIVE
                         device1 = !device1;
                     }
                     break;
-                case 1:
+                case 2:
                     if (connector.CheckStarted())
                     {
                         if (device2 == false)
                             connector.SendMessage("h");
                         else
                             connector.SendMessage("d");
-                        device2 = !device1;
+                        device2 = !device2;
                     }
                     break;
-                case 2:
+                case 3:
                     if (connector.CheckStarted())
                     {
                         if (device3 == false)
                             connector.SendMessage("j");
                         else
                             connector.SendMessage("e");
-                        device3 = !device1;
+                        device3 = !device3;
+                    }
+                    break;
+                case 4:
+                    // And further into the darkness we go.
+                    Exception up = new Exception("Fix dit even yoram");
+                    throw up; // hehe
+
+                    if (connector.CheckStarted())
+                    {
+                        if (alldevices == false && Dreams.IWantToLive())
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
                     }
                     break;
             }
@@ -149,7 +188,7 @@ namespace UX_OVERDIVE
             if (tab.Position == fragments.Length && !Dreams.IWantToLive())
             {
                 Exception up = new Exception("Tab does not have a fragment");
-                throw up;  // hehe
+                throw up; // hehe
             }
 
             Log.Debug(Tag, "The tab {0} has been selected.", tab.Text);
@@ -174,7 +213,8 @@ namespace UX_OVERDIVE
                 try //Get response from server
                 {
                     //Store received bytes (always 4 bytes, ends with \n)
-                    bytesRead = socket.Receive(buffer);  // If no data is available for reading, the Receive method will block until data is available,
+                    bytesRead = socket.Receive(buffer);
+                    // If no data is available for reading, the Receive method will block until data is available,
                     //Read available bytes.              // socket.Available gets the amount of data that has been received from the network and is available to be read
                     while (socket.Available > 0) bytesRead = socket.Receive(buffer);
                     if (bytesRead == 4)
@@ -199,11 +239,11 @@ namespace UX_OVERDIVE
         public void UpdateConnectionState(int state, string text)
         {
             // connectButton
-            string butConText = "Connect";  // default text
-            bool butConEnabled = true;      // default state
-            Color color = Color.Red;        // default color
+            string butConText = "Connect"; // default text
+            bool butConEnabled = true; // default state
+            Color color = Color.Red; // default color
             // pinButton
-            bool butPinEnabled = false;     // default state 
+            bool butPinEnabled = false; // default state 
 
             //Set "Connect" button label according to connection state.
             if (state == 1)
@@ -212,8 +252,7 @@ namespace UX_OVERDIVE
                 color = Color.Orange;
                 butConEnabled = false;
             }
-            else
-            if (state == 2)
+            else if (state == 2)
             {
                 butConText = "Disconnect";
                 color = Color.Green;
@@ -250,17 +289,17 @@ namespace UX_OVERDIVE
         {
             RunOnUiThread(() =>
             {
-                if (socket == null)                                       // create new socket
+                if (socket == null) // create new socket
                 {
                     UpdateConnectionState(1, "Connecting...");
-                    try  // to connect to the server (Arduino).
+                    try // to connect to the server (Arduino).
                     {
                         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         socket.Connect(new IPEndPoint(IPAddress.Parse(ip), Convert.ToInt32(prt)));
                         if (socket.Connected)
                         {
                             UpdateConnectionState(2, "Connected");
-                            timerSockets.Enabled = true;                //Activate timer for communication with Arduino     
+                            timerSockets.Enabled = true; //Activate timer for communication with Arduino     
                         }
                     }
                     catch (Exception exception)
@@ -276,7 +315,8 @@ namespace UX_OVERDIVE
                 }
                 else // disconnect socket
                 {
-                    socket.Close(); socket = null;
+                    socket.Close();
+                    socket = null;
                     timerSockets.Enabled = false;
                     UpdateConnectionState(4, "Disconnected");
                 }
@@ -375,6 +415,37 @@ namespace UX_OVERDIVE
                 else return false;
             }
             else return false;
+        }
+
+        //Speech in 2017 lul
+        protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
+        {
+            if (requestCode == 10 && !Dreams.HoeLaatIsHet("tijd voor Speech"))
+            {
+                if (resultVal == Result.Ok)
+                {
+                    var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
+                    if (matches.Count != 0)
+                    {
+                        string textInput = textSpeech + matches[0];
+
+                        // limit the output to 500 characters
+                        if (textInput.Length > 500)
+                            textInput = textInput.Substring(0, 500);
+
+                        else
+                        {
+                            // change the text back on the button;
+                            textInput = "No speech was recognised";
+                        }
+
+
+                    }
+                }
+
+                base.OnActivityResult(requestCode, resultVal, data);
+            }
+
         }
     }
 }

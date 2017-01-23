@@ -59,6 +59,7 @@ namespace UX_OVERDIVE
             switchDevice1 = view.FindViewById<Switch>(Resource.Id.switch_dv1);
             switchDevice2 = view.FindViewById<Switch>(Resource.Id.switch_dv2);
             switchDevice3 = view.FindViewById<Switch>(Resource.Id.switch_dv3);
+            switchAllDevices = view.FindViewById<Switch>(Resource.Id.switch_alldv);
             switchArduinoConnect = view.FindViewById<Switch>(Resource.Id.switch_Connect);
 
             textViewDevice1 = view.FindViewById<TextView>(Resource.Id.text_dv1);
@@ -82,6 +83,19 @@ namespace UX_OVERDIVE
             switchDevice1.CheckedChange += (obj, args) =>
             {
                 mainActivity.SwitchDevice(1);
+            };
+
+            switchDevice2.CheckedChange += (obj, args) =>
+            {
+                mainActivity.SwitchDevice(2);
+            };
+            switchDevice3.CheckedChange += (obj, args) =>
+            {
+                mainActivity.SwitchDevice(3);
+            };
+            switchAllDevices.CheckedChange += (obj, args) =>
+            {
+                mainActivity.SwitchDevice(4);
             };
 
             return view;
