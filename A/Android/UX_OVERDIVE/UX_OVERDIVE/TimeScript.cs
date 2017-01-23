@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 
 using Android.App;
 using Android.Content;
@@ -26,6 +27,8 @@ namespace UX_OVERDIVE
 
         private Button buttonCancel;
         private Button buttonSave;
+
+        private Timer timerClock;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -54,6 +57,12 @@ namespace UX_OVERDIVE
             // Get the current time
             hour = DateTime.Now.Hour;
             minute = DateTime.Now.Minute;
+
+            timerClock = new Timer() { Interval = 2000, Enabled = true };
+            timerClock.Elapsed += (obj, args) =>
+            {
+                
+            };
 
             buttonCancel.Click += (obj, args) =>
             {
