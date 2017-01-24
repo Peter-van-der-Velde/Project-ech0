@@ -386,21 +386,21 @@ void slagboom(char start){
   duration = pulseIn(echoPin, HIGH);  // receive pulse
   distance1 = (duration/2) / 29.1;    // calculate distance in cm
   delay(500);
-  if(distance1<=0 == false){       // servo wil stil function correctly if distance 0 or negative
+  if(distance1>0){       // servo wil stil function correctly if distance 0 or negative
     distance = distance1;
   }
   Serial.print("Distance: ");   // display distance on monitor
   Serial.println(distance);
 
   // check if barrier should be up or down
-  if(distance<detectie_distance && start == false){       // barrier down in case the barrier doesn't start the circuit
+  if(distance<detectie_distance && !start){       // barrier down in case the barrier doesn't start the circuit --- start == false
     for (pos = pos; pos > 85; pos -= 1) { // goes from pos degrees to 85 degrees
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(15);                       // waits 15ms for the servo to reach the position
     down = true;
     }
   }
-  else if(distance>detectie_distance && start == true){       // barrier down in case the barrier does start the circuit
+  else if(distance>detectie_distance && start){       // barrier down in case the barrier does start the circuit --- start == true
     for (pos = pos; pos > 85; pos -= 1) { // goes from pos degrees to 85 degrees
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(15);                       // waits 15ms for the servo to reach the position
