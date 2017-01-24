@@ -165,7 +165,7 @@ namespace UX_OVERDIVE
                         device1 = false;
                         device2 = false;
                         device3 = false;
-                        allOn = true;
+                        allOn = false;
                     break;
             }
         }
