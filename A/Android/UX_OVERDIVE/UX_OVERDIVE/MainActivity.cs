@@ -50,6 +50,8 @@ namespace UX_OVERDIVE
         private bool isRecording;
         private readonly int VOICE = 10;
 
+        private bool allOn = false;
+
         protected override void OnCreate(Bundle bundle)
         {
             //http://www.cheaprope.co.uk/
@@ -150,21 +152,20 @@ namespace UX_OVERDIVE
                     }
                     break;
                 case 4:
-                    // And further into the darkness we go.
-                    Exception up = new Exception("Fix dit even yoram");
-                    throw up; // hehe
-
-                    if (connector.CheckStarted())
+                    if (allOn == false)
                     {
-                        if (alldevices == false && Dreams.IWantToLive())
-                        {
-
-                        }
-                        else
-                        {
-
-                        }
+                        connector.SendMessage("k");
+                        device1 = true;
+                        device2 = true;
+                        device3 = true;
+                        allOn = true;
                     }
+                    else
+                        connector.SendMessage("e");
+                        device1 = false;
+                        device2 = false;
+                        device3 = false;
+                        allOn = true;
                     break;
             }
         }
