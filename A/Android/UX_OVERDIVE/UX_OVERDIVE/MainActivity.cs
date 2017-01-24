@@ -23,7 +23,7 @@ using Domotica;
 
 namespace UX_OVERDIVE
 {
-    [Activity(Label = "UX-OVERDIVE", MainLauncher = true, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme",
+    [Activity(Label = "Ech0", MainLauncher = false, Icon = "@drawable/LOGO", Theme = "@style/MyCustomTheme",
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
@@ -37,14 +37,18 @@ namespace UX_OVERDIVE
         Timer timerClock, timerSockets; // Timers   
         Socket socket = null; // Socket   
         Connector connector = null; // Connector (simple-mode or threaded-mode)
-        
+
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();
         // List for commands and response places on UI
 
         int listIndex = 0;
 
         bool device1, device2, device3, alldevices;
+        //needed for speech
         private string textSpeech = String.Empty;
+        public string textSpeechInput = String.Empty;
+        private bool isRecording;
+        private readonly int VOICE = 10;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -89,7 +93,8 @@ namespace UX_OVERDIVE
 
                 if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
                 {
-                    connector.SendMessage("k");
+                    if (Convert.ToInt32(savedMinute) == DateTime.Now.Minute)
+                        connector.SendMessage("k");
                 }
             };
         }
@@ -416,12 +421,41 @@ namespace UX_OVERDIVE
             }
             else return false;
         }
+        public void xxXTouwSlayerXxx()
+        {
+            // change the text on the button or maybe not
+            if (true)
+                {
+                    // create the intent and start the activity
+                    Intent voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
+        voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, RecognizerIntent.LanguageModelFreeForm);
 
+                    // put a message on the modal dialog
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraPrompt,
+                        Application.Context.GetString(Resource.String.messageSpeakNow));
+
+                    // if there is more then 1.5s of silence, consider the speech over
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputCompleteSilenceLengthMillis, 1500);
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputPossiblyCompleteSilenceLengthMillis, 1500);
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputMinimumLengthMillis, 15000);
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraMaxResults, 1);
+
+                    // you can specify other languages recognised here, for example
+                    // voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.German);
+                    // if you wish it to recognise the default Locale language and German
+                    // if you do use another locale, regional dialects may not be recognised very well
+
+                    voiceIntent.PutExtra(RecognizerIntent.ExtraLanguage, Java.Util.Locale.Default);
+                    StartActivityForResult(voiceIntent, VOICE);
+    }
+
+        }
         //Speech in 2017 lul
         protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
         {
             if (requestCode == 10 && !Dreams.HoeLaatIsHet("tijd voor Speech"))
             {
+                //throw new Java.Lang.Exception("error, stik er in");
                 if (resultVal == Result.Ok)
                 {
                     var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
@@ -431,12 +465,15 @@ namespace UX_OVERDIVE
 
                         // limit the output to 500 characters
                         if (textInput.Length > 500)
+                        {
                             textInput = textInput.Substring(0, 500);
-
+                            textSpeechInput = textInput;
+                        }
                         else
                         {
                             // change the text back on the button;
-                            textInput = "No speech was recognised";
+                            //textInput = "No speech was recognised";
+                            textSpeechInput = textInput;
                         }
 
 
@@ -445,7 +482,15 @@ namespace UX_OVERDIVE
 
                 base.OnActivityResult(requestCode, resultVal, data);
             }
+            else
+            {
+                textSpeechInput = "error";
+
+            }
 
         }
     }
 }
+
+        
+ 
