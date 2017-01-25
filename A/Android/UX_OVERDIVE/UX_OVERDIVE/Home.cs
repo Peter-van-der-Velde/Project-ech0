@@ -21,25 +21,15 @@ namespace UX_OVERDIVE
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
-            var view = inflater.Inflate(Resource.Layout.Home, container, false);
+            var view = inflater.Inflate(Resource.Layout.Temprature, container, false);
 
             buttonConnect = view.FindViewById<Button>(Resource.Id.button1);
             settingButton = view.FindViewById<ImageButton>(Resource.Id.settingbutton2);
 
-            //sets the text of the button
-            //.Text = "You clicked the button " + 0.ToString() + " times.";
-
-
-            //clicker.Click += clicker_Click;
-            settingButton.Click += settingButton_Click;
 
             return view;
         }
 
-        private void settingButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(Activity, typeof(Settings));
-            this.StartActivity(intent);
-        }
+
     }
 }

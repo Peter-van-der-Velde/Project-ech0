@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/backGround">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1">
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Temperature:"
+                android:padding="3dip"
+                android:id="@+id/temperatureValue"
+                android:layout_marginLeft="40dp" />
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="3"
+                android:text="@string/temp_value"
+                android:padding="3dip"
+                android:id="@+id/textViewTempValue"
+                android:layout_marginRight="40dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Humidity:"
+                android:padding="3dip"
+                android:id="@+id/humidityValue"
+                android:layout_marginLeft="40dp" />
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="3"
+                android:text="@string/humi_value"
+                android:padding="3dip"
+                android:id="@+id/textViewHumiValue"
+                android:layout_marginRight="40dp" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="30dp">
+            <TextView
+                android:textColor="@color/text"
+                android:layout_column="0"
+                android:text="Temp to turn off device1:"
+                android:padding="3dip"
+                android:id="@+id/Dev1off"
+                android:layout_marginLeft="40dp" />
+            <EditText
+                android:id="@+id/Dev1Off"
+                android:layout_width="100dp"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="40dp"
+                android:singleLine="true"
+                android:layout_column="3"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text" />
+        </TableRow>
+    </TableLayout>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_B2Temp"
+        android:src="@drawable/Settings" />
+</FrameLayout>
