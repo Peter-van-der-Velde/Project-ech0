@@ -80,7 +80,16 @@ namespace Domotica
                         /*if (result == "OFF" || result == " ON") {
                             mainActivity.UpdateGUI(result, mainActivity.textViewChangePinStateValue);
                         }*/
-					}
+                        //resulst from temp and hum command
+                        if(result[0] == 't')
+                        {
+                            mainActivity.temperature.textViewTempValue.Text = result[1] + "" + result[2];
+                        }
+                        if (result[0] == 'h')
+                        {
+                            mainActivity.humidity.textViewHumiValue.Text = result[1] + "" + result[2];
+                        }
+                    }
 					Thread.Sleep (10);
 				}
 			} catch (Exception exception) {

@@ -19,9 +19,9 @@
             <TextView
                 android:textColor="@color/text"
                 android:layout_column="3"
-                android:text="NULL"
+                android:text="@string/temp_value"
                 android:padding="3dip"
-                android:id="@+id/heatVal"
+                android:id="@+id/textViewTempValue"
                 android:layout_marginRight="40dp" />
         </TableRow>
         <TableRow
@@ -36,10 +36,10 @@
             <TextView
                 android:textColor="@color/text"
                 android:layout_column="3"
-                android:text="NULL"
                 android:padding="3dip"
-                android:id="@+id/HumidVal"
-                android:layout_marginRight="40dp" />
+                android:id="@+id/textViewHumiValue"
+                android:layout_marginRight="40dp"
+                android:text="@string/humi_value" />
         </TableRow>
     </TableLayout>
 </FrameLayout>
