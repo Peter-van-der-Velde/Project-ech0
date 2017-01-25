@@ -121,9 +121,6 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001c
 			public const int FL_lel = 2131230748;
 			
-			// aapt resource value: 0x7f080039
-			public const int HumidVal = 2131230777;
-			
 			// aapt resource value: 0x7f08001d
 			public const int IpAdress = 2131230749;
 			
@@ -189,9 +186,6 @@ namespace UX_OVERDIVE
 			
 			// aapt resource value: 0x7f080004
 			public const int frameLayout1 = 2131230724;
-			
-			// aapt resource value: 0x7f080037
-			public const int heatVal = 2131230775;
 			
 			// aapt resource value: 0x7f080038
 			public const int humidityValue = 2131230776;
@@ -280,6 +274,9 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080015
 			public const int textViewDebugValue = 2131230741;
 			
+			// aapt resource value: 0x7f080039
+			public const int textViewHumiValue = 2131230777;
+			
 			// aapt resource value: 0x7f08000a
 			public const int textViewIPAddress = 2131230730;
 			
@@ -297,6 +294,9 @@ namespace UX_OVERDIVE
 			
 			// aapt resource value: 0x7f080009
 			public const int textViewServerConnect = 2131230729;
+			
+			// aapt resource value: 0x7f080037
+			public const int textViewTempValue = 2131230775;
 			
 			// aapt resource value: 0x7f080006
 			public const int textViewTimerState = 2131230726;
@@ -424,8 +424,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f050000
 			public const int Hello = 2131034112;
 			
-			// aapt resource value: 0x7f050014
-			public const int abort = 2131034132;
+			// aapt resource value: 0x7f050016
+			public const int abort = 2131034134;
 			
 			// aapt resource value: 0x7f050006
 			public const int arduino_server_connect = 2131034118;
@@ -442,17 +442,20 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f05000e
 			public const int change_pin_state_value = 2131034126;
 			
-			// aapt resource value: 0x7f050011
-			public const int debug_text = 2131034129;
+			// aapt resource value: 0x7f050013
+			public const int debug_text = 2131034131;
 			
-			// aapt resource value: 0x7f050012
-			public const int debug_value = 2131034130;
+			// aapt resource value: 0x7f050014
+			public const int debug_value = 2131034132;
 			
 			// aapt resource value: 0x7f050002
 			public const int empty = 2131034114;
 			
-			// aapt resource value: 0x7f050013
-			public const int exit = 2131034131;
+			// aapt resource value: 0x7f050015
+			public const int exit = 2131034133;
+			
+			// aapt resource value: 0x7f050011
+			public const int humi_value = 2131034129;
 			
 			// aapt resource value: 0x7f050007
 			public const int ip_address_text = 2131034119;
@@ -466,8 +469,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f05000a
 			public const int ip_port_value = 2131034122;
 			
-			// aapt resource value: 0x7f050015
-			public const int messageSpeakNow = 2131034133;
+			// aapt resource value: 0x7f050017
+			public const int messageSpeakNow = 2131034135;
 			
 			// aapt resource value: 0x7f05000d
 			public const int pin_state_text = 2131034125;
@@ -475,8 +478,11 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f05000f
 			public const int sensor_text = 2131034127;
 			
+			// aapt resource value: 0x7f050012
+			public const int sensor_value = 2131034130;
+			
 			// aapt resource value: 0x7f050010
-			public const int sensor_value = 2131034128;
+			public const int temp_value = 2131034128;
 			
 			// aapt resource value: 0x7f050003
 			public const int timer_state_text = 2131034115;
