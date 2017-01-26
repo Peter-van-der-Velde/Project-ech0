@@ -25,7 +25,7 @@ namespace UX_OVERDIVE
 
 		private void LoadActivity()
 		{
-			System.Threading.Thread.Sleep(5000); // Simulate a long pause    
+			System.Threading.Thread.Sleep(3000); // Simulate a long pause    
 			RunOnUiThread(() => StartActivity(typeof(MainActivity)));
 		}
 

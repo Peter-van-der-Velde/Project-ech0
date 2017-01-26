@@ -35,8 +35,10 @@ namespace UX_OVERDIVE
         static readonly string Tag = "UX-OVERDRIVE";
 
         Timer timerClock, timerSockets; // Timers   
-        Socket socket = null; // Socket   
-        Connector connector = null; // Connector (simple-mode or threaded-mode)
+        public Socket socket = null; // Socket   
+        public Connector connector = null; // Connector (simple-mode or threaded-mode)
+        public Home temperature;
+        public Home humidity;
 
         List<Tuple<string, TextView>> commandList = new List<Tuple<string, TextView>>();
         // List for commands and response places on UI
@@ -74,7 +76,7 @@ namespace UX_OVERDIVE
             {
                 new Sliders(this),
                 new Clock(),
-                new Home(),
+                new Home(this),
                 new SpeechFragment(this),
             };
 

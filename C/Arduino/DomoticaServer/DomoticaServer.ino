@@ -44,7 +44,7 @@
 #include <Servo.h>              //libary for the servo
 
 // Set Ethernet Shield MAC address  (check yours)
-byte mac[] = { 0x41, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
+byte mac[] = { 0x49, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
 int ethPort = 53;                                  // Take a free port (check your router)
 
 #define RFPin        3  // output, pin to control the RF-sender (and Click-On Click-Off-device)
