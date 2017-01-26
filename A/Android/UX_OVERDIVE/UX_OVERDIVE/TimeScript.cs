@@ -33,6 +33,8 @@ namespace UX_OVERDIVE
         {
             base.OnCreate(savedInstanceState);
 
+            int timerNumber = Intent.GetIntExtra("TimerToEdit", 0);
+
             ActionBar.SetHomeButtonEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             
@@ -49,8 +51,8 @@ namespace UX_OVERDIVE
 
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
 
-            hour = Convert.ToInt32(pref.GetString("Hour", DateTime.Now.Hour.ToString()));
-            minute = Convert.ToInt32(pref.GetString("Minute", DateTime.Now.Minute.ToString()));
+            hour = Convert.ToInt32(pref.GetString("Hour" + timerNumber, DateTime.Now.Hour.ToString()));
+            minute = Convert.ToInt32(pref.GetString("Minute" + timerNumber, DateTime.Now.Minute.ToString()));
 
             buttonCancel.Click += (obj, args) =>
             {
@@ -60,11 +62,18 @@ namespace UX_OVERDIVE
             buttonSave.Click += (obj, args) =>
             {
                 ISharedPreferencesEditor edit = pref.Edit();
-                edit.PutString("Hour", Convert.ToString(hour));
-                edit.PutString("Minute", Convert.ToString(minute));
+                edit.PutString("Hour" + timerNumber, Convert.ToString(hour));
+                edit.PutString("Minute" + timerNumber, Convert.ToString(minute));
                 edit.Apply();
                 this.Finish();
+
+                Clock.timers[timerNumber].hour = "" + hour;
+                Clock.timers[timerNumber].minute = "" + minute;
+                Clock.timers[timerNumber].switch1 = FindViewById<Switch>(Resource.Id.switch_dv1_TIMESCRIPT).Checked;
+                Clock.timers[timerNumber].switch2 = FindViewById<Switch>(Resource.Id.switch_dv2_TIMESCRIPT).Checked;
+                Clock.timers[timerNumber].switch3 = FindViewById<Switch>(Resource.Id.switchDV3_TIMESCRIPT).Checked;
             };
+
             string rec = Android.Content.PM.PackageManager.FeatureMicrophone;
             // Display the current date
             UpdateDisplay();
@@ -106,6 +115,5 @@ namespace UX_OVERDIVE
                     return base.OnOptionsItemSelected(item);
             }
         }
-
     }
 }

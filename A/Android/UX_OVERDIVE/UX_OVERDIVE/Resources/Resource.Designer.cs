@@ -130,8 +130,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080034
 			public const int SplashWheel = 2131230772;
 			
-			// aapt resource value: 0x7f080048
-			public const int abort = 2131230792;
+			// aapt resource value: 0x7f08005d
+			public const int abort = 2131230813;
 			
 			// aapt resource value: 0x7f08002e
 			public const int btnRecord = 2131230766;
@@ -154,8 +154,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080021
 			public const int buttonCancel = 2131230753;
 			
-			// aapt resource value: 0x7f080045
-			public const int buttonCancel2 = 2131230789;
+			// aapt resource value: 0x7f08005a
+			public const int buttonCancel2 = 2131230810;
 			
 			// aapt resource value: 0x7f08000f
 			public const int buttonChangePinState = 2131230735;
@@ -166,8 +166,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080022
 			public const int buttonSave = 2131230754;
 			
-			// aapt resource value: 0x7f080046
-			public const int buttonSave2 = 2131230790;
+			// aapt resource value: 0x7f08005b
+			public const int buttonSave2 = 2131230811;
 			
 			// aapt resource value: 0x7f080032
 			public const int buttonUpdate = 2131230770;
@@ -184,8 +184,8 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f08001f
 			public const int editTextPORT = 2131230751;
 			
-			// aapt resource value: 0x7f080047
-			public const int exit = 2131230791;
+			// aapt resource value: 0x7f08005c
+			public const int exit = 2131230812;
 			
 			// aapt resource value: 0x7f080004
 			public const int frameLayout1 = 2131230724;
@@ -226,17 +226,32 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080001
 			public const int settingbutton2 = 2131230721;
 			
-			// aapt resource value: 0x7f08003d
-			public const int settingbutton3 = 2131230781;
+			// aapt resource value: 0x7f080052
+			public const int settingbutton3 = 2131230802;
 			
 			// aapt resource value: 0x7f080033
 			public const int splashImage = 2131230771;
 			
-			// aapt resource value: 0x7f080044
-			public const int switchDV3_TIMESCRIPT = 2131230788;
+			// aapt resource value: 0x7f080059
+			public const int switchDV3_TIMESCRIPT = 2131230809;
 			
-			// aapt resource value: 0x7f08003c
-			public const int switchTime = 2131230780;
+			// aapt resource value: 0x7f08003d
+			public const int switchTime0 = 2131230781;
+			
+			// aapt resource value: 0x7f080041
+			public const int switchTime1 = 2131230785;
+			
+			// aapt resource value: 0x7f080045
+			public const int switchTime2 = 2131230789;
+			
+			// aapt resource value: 0x7f080049
+			public const int switchTime3 = 2131230793;
+			
+			// aapt resource value: 0x7f08004d
+			public const int switchTime4 = 2131230797;
+			
+			// aapt resource value: 0x7f080051
+			public const int switchTime5 = 2131230801;
 			
 			// aapt resource value: 0x7f080024
 			public const int switch_Connect = 2131230756;
@@ -247,17 +262,35 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080026
 			public const int switch_dv1 = 2131230758;
 			
-			// aapt resource value: 0x7f080040
-			public const int switch_dv1_TIMESCRIPT = 2131230784;
+			// aapt resource value: 0x7f080055
+			public const int switch_dv1_TIMESCRIPT = 2131230805;
 			
 			// aapt resource value: 0x7f080028
 			public const int switch_dv2 = 2131230760;
 			
-			// aapt resource value: 0x7f080042
-			public const int switch_dv2_TIMESCRIPT = 2131230786;
+			// aapt resource value: 0x7f080057
+			public const int switch_dv2_TIMESCRIPT = 2131230807;
 			
 			// aapt resource value: 0x7f08002a
 			public const int switch_dv3 = 2131230762;
+			
+			// aapt resource value: 0x7f08003a
+			public const int tableRow0 = 2131230778;
+			
+			// aapt resource value: 0x7f08003e
+			public const int tableRow1 = 2131230782;
+			
+			// aapt resource value: 0x7f080042
+			public const int tableRow2 = 2131230786;
+			
+			// aapt resource value: 0x7f080046
+			public const int tableRow3 = 2131230790;
+			
+			// aapt resource value: 0x7f08004a
+			public const int tableRow4 = 2131230794;
+			
+			// aapt resource value: 0x7f08004e
+			public const int tableRow5 = 2131230798;
 			
 			// aapt resource value: 0x7f080036
 			public const int temperatureValue = 2131230774;
@@ -313,29 +346,59 @@ namespace UX_OVERDIVE
 			// aapt resource value: 0x7f080025
 			public const int text_dv1 = 2131230757;
 			
-			// aapt resource value: 0x7f08003f
-			public const int text_dv1_TIMESCRIPT = 2131230783;
+			// aapt resource value: 0x7f080054
+			public const int text_dv1_TIMESCRIPT = 2131230804;
 			
 			// aapt resource value: 0x7f080027
 			public const int text_dv2 = 2131230759;
 			
-			// aapt resource value: 0x7f080041
-			public const int text_dv2_TIMESCRIPT = 2131230785;
+			// aapt resource value: 0x7f080056
+			public const int text_dv2_TIMESCRIPT = 2131230806;
 			
 			// aapt resource value: 0x7f080029
 			public const int text_dv3 = 2131230761;
 			
-			// aapt resource value: 0x7f080043
-			public const int text_dv3_TIMESCRIPT = 2131230787;
+			// aapt resource value: 0x7f080058
+			public const int text_dv3_TIMESCRIPT = 2131230808;
 			
-			// aapt resource value: 0x7f08003e
-			public const int timeDisplay = 2131230782;
+			// aapt resource value: 0x7f080053
+			public const int timeDisplay = 2131230803;
+			
+			// aapt resource value: 0x7f08003c
+			public const int txtDevice = 2131230780;
+			
+			// aapt resource value: 0x7f080040
+			public const int txtDevice1 = 2131230784;
+			
+			// aapt resource value: 0x7f080044
+			public const int txtDevice2 = 2131230788;
+			
+			// aapt resource value: 0x7f080048
+			public const int txtDevice3 = 2131230792;
+			
+			// aapt resource value: 0x7f08004c
+			public const int txtDevice4 = 2131230796;
+			
+			// aapt resource value: 0x7f080050
+			public const int txtDevice5 = 2131230800;
 			
 			// aapt resource value: 0x7f08003b
-			public const int txtDevice = 2131230779;
+			public const int txtTime0 = 2131230779;
 			
-			// aapt resource value: 0x7f08003a
-			public const int txtTime = 2131230778;
+			// aapt resource value: 0x7f08003f
+			public const int txtTime1 = 2131230783;
+			
+			// aapt resource value: 0x7f080043
+			public const int txtTime2 = 2131230787;
+			
+			// aapt resource value: 0x7f080047
+			public const int txtTime3 = 2131230791;
+			
+			// aapt resource value: 0x7f08004b
+			public const int txtTime4 = 2131230795;
+			
+			// aapt resource value: 0x7f08004f
+			public const int txtTime5 = 2131230799;
 			
 			static Id()
 			{
