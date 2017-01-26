@@ -114,7 +114,7 @@ namespace UX_OVERDIVE
                             if (s.switch1 == true && s.switch2 == true && s.switch3 == true)
                                 connector.SendMessage("k");
                             else if (s.switch1 == false && s.switch2 == false && s.switch3 == false)
-                                connector.SendMessage("e");
+                                connector.SendMessage("la");
                             else
                             {
                                 if (s.switch1 == false)
@@ -159,34 +159,25 @@ namespace UX_OVERDIVE
             switch (device)
             {
                 case 1:
-                    if (connector.CheckStarted())
-                    {
-                        if (device1 == false)
-                            connector.SendMessage("t");
-                        else
-                            connector.SendMessage("c");
-                        device1 = !device1;
-                    }
+                    if (device1 == false)
+                        connector.SendMessage("t");
+                    else
+                        connector.SendMessage("c");
+                    device1 = !device1;
                     break;
                 case 2:
-                    if (connector.CheckStarted())
-                    {
-                        if (device2 == false)
-                            connector.SendMessage("h");
-                        else
-                            connector.SendMessage("d");
-                        device2 = !device2;
-                    }
+                    if (device2 == false)
+                        connector.SendMessage("h");
+                    else
+                        connector.SendMessage("d");
+                    device2 = !device2;
                     break;
                 case 3:
-                    if (connector.CheckStarted())
-                    {
-                        if (device3 == false)
-                            connector.SendMessage("j");
-                        else
-                            connector.SendMessage("e");
-                        device3 = !device3;
-                    }
+                    if (device3 == false)
+                        connector.SendMessage("j");
+                    else
+                        connector.SendMessage("e");
+                    device3 = !device3;
                     break;
                 case 4:
                     if (allOn == false)
@@ -198,7 +189,7 @@ namespace UX_OVERDIVE
                         allOn = true;
                     }
                     else
-                        connector.SendMessage("e");
+                        connector.SendMessage("l");
                         device1 = false;
                         device2 = false;
                         device3 = false;

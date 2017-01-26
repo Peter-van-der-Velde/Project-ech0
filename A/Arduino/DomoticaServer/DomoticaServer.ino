@@ -39,7 +39,7 @@
 #include <SPI.h>                  // Ethernet shield uses SPI-interface
 #include <Ethernet.h>             // Ethernet library (use Ethernet2.h for new ethernet shield v2)
 #include <NewRemoteTransmitter.h> // Remote Control, Gamma, APA3
-#include <AM2320.h> //temp meter
+//#include <AM2320.h> //temp meter
 //#include <RemoteTransmitter.h>    // Remote Control, Action, old model
 //#include <RCSwitch.h>           // Remote Control, Action, new model
 
@@ -69,7 +69,7 @@ int apaState0 = 0;
 int apaState1 = 0;
 int apaState2 = 0;
 
-AM2320 th; //temp meter
+//AM2320 th; //temp meter
 
 
 void setup()
@@ -137,10 +137,10 @@ void loop()
    // Do what needs to be done while the socket is connected.
    while (ethernetClient.connected()) 
    {
-      th.Read(); //read temp meter
+      //th.Read(); //read temp meter
       checkEvent(switchPin, pinState);          // update pin state
-      Temperatuur = th.t*0.90;         // update temp
-      Vochtigheid = th.h*0.90;         //update vocht
+      //Temperatuur = th.t*0.90;         // update temp
+      //Vochtigheid = th.h*0.90;         //update vocht
       
       // Activate pin based op pinState
       if (pinChange) {
@@ -181,7 +181,7 @@ void switchDefault()
 void executeCommand(char cmd)
 {     
          char buf[4] = {'\0', '\0', '\0', '\0'};
-
+         
          // Command protocol
          Serial.print("["); Serial.print(cmd); Serial.print("] -> ");
          switch (cmd) {
@@ -201,21 +201,27 @@ void executeCommand(char cmd)
             break;
          case 't': //aan
               apaState0 = 1;
+              pinChange = true;
             break;
          case 'c': // uit
               apaState0 = 0;
+              pinChange = true;
             break;
          case 'h':
               apaState1 = 1;
+              pinChange = true;
             break;
          case 'd':
               apaState1 = 0;
+              pinChange = true;
             break;
          case 'j':
               apaState2 = 1;
+              pinChange = true;
               break;
          case 'e':
               apaState2 = 0;
+              pinChange = true;
               break;
          case 'k':
             apaState0 = 1;
