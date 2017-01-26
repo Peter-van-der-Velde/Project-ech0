@@ -1,5 +1,4 @@
 ﻿using System;
-using Black_magic;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -70,7 +69,7 @@ namespace UX_OVERDIVE
             //removes title and icon from actionbar
             ActionBar.SetDisplayShowHomeEnabled(false);
             ActionBar.SetDisplayShowTitleEnabled(false);
-
+            Log.Info("myAPPlel", "TEST12");
             //fragments used
             fragments = new Fragment[]
             {
@@ -193,7 +192,7 @@ namespace UX_OVERDIVE
             ActionBar.Tab tab = (ActionBar.Tab) sender;
 
             //checks if the tab has a fragment connected to it
-            if (tab.Position == fragments.Length && !Dreams.IWantToLive())
+            if (tab.Position == fragments.Length)
             {
                 Exception up = new Exception("Tab does not have a fragment");
                 throw up; // hehe
@@ -456,7 +455,7 @@ namespace UX_OVERDIVE
         //Speech in 2017 lul
         protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
         {
-            if (requestCode == 10 && !Dreams.HoeLaatIsHet("tijd voor Speech"))
+            if (requestCode == 10)
             {
                 //throw new Java.Lang.Exception("error, stik er in");
                 if (resultVal == Result.Ok)
@@ -477,6 +476,7 @@ namespace UX_OVERDIVE
                             // change the text back on the button;
                             //textInput = "No speech was recognised";
                             textSpeechInput = textInput;
+                            OVERDRIVE();
                         }
 
 
@@ -489,6 +489,76 @@ namespace UX_OVERDIVE
             {
                 textSpeechInput = "error";
 
+            }
+
+        }
+
+        // textSpeechString to commands
+        private void OVERDRIVE()
+        {
+            string speechCompleteString;
+            bool boolOne = false;
+            bool boolTwo = false;
+            bool boolThree = false;
+            bool boolAll = false;
+            bool boolOn = false;
+            bool boolOff = false;
+            bool boolConnect = false;
+
+            speechCompleteString = textSpeechInput;
+            string[] words = speechCompleteString.Split(' ');
+            string word = String.Empty;
+            for (int i = 0; i < words.Length; i++)
+            {
+                word = words[i].Trim().ToLower();
+                switch (word)
+                {
+                    case "one":
+                        boolOne = true;
+                        break;
+                    case "two":
+                        boolTwo = true;
+                        break;
+                    case "three":
+                        boolThree = true;
+                        break;
+                    case "all":
+                        boolAll = true;
+                        break;
+                    case "on":
+                        boolOn = true;
+                        break;
+                    case "off":
+                        boolOff = true;
+                        break;
+                    case "connect":
+                        boolConnect = true;
+                        break;
+                }
+            }
+
+            if (boolConnect)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+                string IPADDRESS = pref.GetString("IP", "192.168.1.102");
+                string PORT = pref.GetString("PORT", "53");
+
+                SwitchConnect(IPADDRESS, PORT);
+            }
+
+            if (boolOn)
+            {
+                if (boolOne) SwitchDevice(1);
+                if (boolTwo) SwitchDevice(2);
+                if (boolThree) SwitchDevice(3);
+                if (boolAll) SwitchDevice(4);
+            }
+            else if (boolOff)
+            {
+                if (boolOne) SwitchDevice(1);
+                if (boolTwo) SwitchDevice(2);
+                if (boolThree) SwitchDevice(3);
+                if (boolAll) SwitchDevice(4);
             }
 
         }

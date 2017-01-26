@@ -44,7 +44,7 @@
 //#include <RCSwitch.h>           // Remote Control, Action, new model
 
 // Set Ethernet Shield MAC address  (check yours)
-byte mac[] = { 0x41, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
+byte mac[] = { 0x40, 0x6c, 0x8f, 0x36, 0x84, 0x8a }; // Ethernet adapter shield S. Oosterhaven
 int ethPort = 60;                                  // Take a free port (check your router)
 
 #define RFPin        3  // output, pin to control the RF-sender (and Click-On Click-Off-device)

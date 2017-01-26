@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
@@ -33,6 +34,10 @@ namespace UX_OVERDIVE
 
             ActionBar.SetHomeButtonEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
+            
+            //ActionBar.SetTitle(Html.FromHtml("<font color='#ff0000'>ActionBarTitle </font>", FromHtmlOptions.ModeLegacy));
+
+            //ActionBar.SetTitle();
             // Create your application here
             SetContentView(Resource.Layout.Settings);
 
@@ -42,7 +47,6 @@ namespace UX_OVERDIVE
             buttonSave = FindViewById<Button>(Resource.Id.buttonSave);
             FL = FindViewById<FrameLayout>(Resource.Id.FL_lel);
 
-            //
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
             string wrtIP = pref.GetString("IP", "192.168.1.100");
             string wrtPORT = pref.GetString("PORT", "53");
