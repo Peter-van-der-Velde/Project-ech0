@@ -92,13 +92,35 @@ namespace UX_OVERDIVE
             Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
             clockTimer.Elapsed += (obj, args) =>
             {
-                string savedHour = pref.GetString("Hour", DateTime.Now.Hour.ToString());
-                string savedMinute = pref.GetString("Minute", DateTime.Now.Hour.ToString());
-
-                if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
+                foreach(TimerObject s in Clock.timers.Values)
                 {
-                    if (Convert.ToInt32(savedMinute) == DateTime.Now.Minute)
-                        connector.SendMessage("k");
+                    if (Convert.ToInt32(s.hour) == DateTime.Now.Hour)
+                    {
+                        if (Convert.ToInt32(s.minute) == DateTime.Now.Minute)
+                        {
+                            if (s.switch1 == true && s.switch2 == true && s.switch3 == true)
+                                connector.SendMessage("k");
+                            else if (s.switch1 == false && s.switch2 == false && s.switch3 == false)
+                                connector.SendMessage("e");
+                            else
+                            {
+                                if (s.switch1 == false)
+                                    connector.SendMessage("t");
+                                else
+                                    connector.SendMessage("c");
+
+                                if (s.switch2 == false)
+                                    connector.SendMessage("h");
+                                else
+                                    connector.SendMessage("d");
+
+                                if (s.switch3 == false)
+                                    connector.SendMessage("j");
+                                else
+                                    connector.SendMessage("e");
+                            }
+                        }
+                    }
                 }
             };
         }
