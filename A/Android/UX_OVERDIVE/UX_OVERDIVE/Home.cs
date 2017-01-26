@@ -22,6 +22,7 @@ namespace UX_OVERDIVE
         public TextView textViewTempValue, textViewHumiValue;
         Timer timerTemp;
         public string temp;
+        public string humi;
 
         public Home(MainActivity activity)
         {
@@ -55,8 +56,9 @@ namespace UX_OVERDIVE
             //mainActivity.connector.SendMessage("a");
             //mainActivity.connector.SendMessage("b");
                 textViewTempValue.Text = temp;
+                textViewHumiValue.Text = humi;
             };
-
+            
             return view;
         }
 

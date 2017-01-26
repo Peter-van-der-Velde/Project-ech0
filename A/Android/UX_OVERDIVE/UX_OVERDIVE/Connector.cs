@@ -109,7 +109,7 @@ namespace Domotica
 						//Ask for pin status (from Arduino) update every second.
 						//socket.Send (Encoding.ASCII.GetBytes ("s"));  // protocol: s: get status information
                         socket.Send(Encoding.ASCII.GetBytes("a"));
-                        //socket.Send(Encoding.ASCII.GetBytes("b"));
+                        socket.Send(Encoding.ASCII.GetBytes("b"));
                         Thread.Sleep (1000);
 					}
 				}

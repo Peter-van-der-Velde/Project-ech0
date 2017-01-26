@@ -88,11 +88,24 @@ namespace UX_OVERDIVE
             //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
 
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
+            
+            /*Timer temprand = new Timer() { Interval = 2000, Enabled = true };
+            temprand.Elapsed += (obj, args) =>
+            {
+                if (Convert.ToInt16(Home.temp) > 25)
+                {
+                    connector.SendMessage("t");
+                }
+                else if(Convert.ToInt16(Home.temp) < 22)
+                {
+                    connector.SendMessage("c");
+                }
+            };*/
 
             Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
             clockTimer.Elapsed += (obj, args) =>
             {
-                foreach(TimerObject s in Clock.timers.Values)
+                foreach (TimerObject s in Clock.timers.Values)
                 {
                     if (Convert.ToInt32(s.hour) == DateTime.Now.Hour)
                     {
@@ -225,7 +238,6 @@ namespace UX_OVERDIVE
             Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
-
 
         //Send command to server and wait for response (blocking)
         //Method should only be called when socket existst
