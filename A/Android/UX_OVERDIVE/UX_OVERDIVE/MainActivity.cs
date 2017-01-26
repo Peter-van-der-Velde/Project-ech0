@@ -87,17 +87,52 @@ namespace UX_OVERDIVE
             //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
 
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
+            
+            /*Timer temprand = new Timer() { Interval = 2000, Enabled = true };
+            temprand.Elapsed += (obj, args) =>
+            {
+                if (Convert.ToInt16(Home.temp) > 25)
+                {
+                    connector.SendMessage("t");
+                }
+                else if(Convert.ToInt16(Home.temp) < 22)
+                {
+                    connector.SendMessage("c");
+                }
+            };*/
 
             Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
             clockTimer.Elapsed += (obj, args) =>
             {
-                string savedHour = pref.GetString("Hour", DateTime.Now.Hour.ToString());
-                string savedMinute = pref.GetString("Minute", DateTime.Now.Hour.ToString());
-
-                if (Convert.ToInt32(savedHour) == DateTime.Now.Hour)
+                foreach (TimerObject s in Clock.timers.Values)
                 {
-                    if (Convert.ToInt32(savedMinute) == DateTime.Now.Minute)
-                        connector.SendMessage("k");
+                    if (Convert.ToInt32(s.hour) == DateTime.Now.Hour)
+                    {
+                        if (Convert.ToInt32(s.minute) == DateTime.Now.Minute)
+                        {
+                            if (s.switch1 == true && s.switch2 == true && s.switch3 == true)
+                                connector.SendMessage("k");
+                            else if (s.switch1 == false && s.switch2 == false && s.switch3 == false)
+                                connector.SendMessage("la");
+                            else
+                            {
+                                if (s.switch1 == false)
+                                    connector.SendMessage("t");
+                                else
+                                    connector.SendMessage("c");
+
+                                if (s.switch2 == false)
+                                    connector.SendMessage("h");
+                                else
+                                    connector.SendMessage("d");
+
+                                if (s.switch3 == false)
+                                    connector.SendMessage("j");
+                                else
+                                    connector.SendMessage("e");
+                            }
+                        }
+                    }
                 }
             };
         }
@@ -123,34 +158,25 @@ namespace UX_OVERDIVE
             switch (device)
             {
                 case 1:
-                    if (connector.CheckStarted())
-                    {
-                        if (device1 == false)
-                            connector.SendMessage("t");
-                        else
-                            connector.SendMessage("c");
-                        device1 = !device1;
-                    }
+                    if (device1 == false)
+                        connector.SendMessage("t");
+                    else
+                        connector.SendMessage("c");
+                    device1 = !device1;
                     break;
                 case 2:
-                    if (connector.CheckStarted())
-                    {
-                        if (device2 == false)
-                            connector.SendMessage("h");
-                        else
-                            connector.SendMessage("d");
-                        device2 = !device2;
-                    }
+                    if (device2 == false)
+                        connector.SendMessage("h");
+                    else
+                        connector.SendMessage("d");
+                    device2 = !device2;
                     break;
                 case 3:
-                    if (connector.CheckStarted())
-                    {
-                        if (device3 == false)
-                            connector.SendMessage("j");
-                        else
-                            connector.SendMessage("e");
-                        device3 = !device3;
-                    }
+                    if (device3 == false)
+                        connector.SendMessage("j");
+                    else
+                        connector.SendMessage("e");
+                    device3 = !device3;
                     break;
                 case 4:
                     if (allOn == false)
@@ -162,7 +188,7 @@ namespace UX_OVERDIVE
                         allOn = true;
                     }
                     else
-                        connector.SendMessage("e");
+                        connector.SendMessage("l");
                         device1 = false;
                         device2 = false;
                         device3 = false;
@@ -202,7 +228,6 @@ namespace UX_OVERDIVE
             Fragment frag = MainActivity.fragments[tab.Position];
             tabEventArgs.FragmentTransaction.Replace(Resource.Id.frameLayout1, frag);
         }
-
 
         //Send command to server and wait for response (blocking)
         //Method should only be called when socket existst

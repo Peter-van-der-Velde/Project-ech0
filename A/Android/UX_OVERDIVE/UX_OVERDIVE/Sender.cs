@@ -59,15 +59,15 @@ namespace Domotica
 
 				//Check if connection is still active.
 				while ((Thread.VolatileRead (ref threadStarted) == 1) && socket.Connected) {
-
 					if (message != null) {
-						//Encode the character to a byte.
-						byte[] msg = Encoding.ASCII.GetBytes (message);
+                        Console.WriteLine(message);
+                        //Encode the character to a byte.
+                        byte[] msg = Encoding.ASCII.GetBytes (message);
 
 						//Send the byte to the Arduino server
 						socket.Send (msg);
                         // clear message
-						message = null;
+                        message = null;
 					}
 					Thread.Sleep (100);
 				}

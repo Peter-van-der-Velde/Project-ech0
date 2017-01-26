@@ -21,6 +21,8 @@ namespace UX_OVERDIVE
         private ImageButton settingButton;
         public TextView textViewTempValue, textViewHumiValue;
         Timer timerTemp;
+        public string temp;
+        public string humi;
 
         public Home(MainActivity activity)
         {
@@ -51,10 +53,12 @@ namespace UX_OVERDIVE
             timerTemp = new System.Timers.Timer() { Interval = 2000, Enabled = true };
             timerTemp.Elapsed += (obj, args) =>
             {
-                mainActivity.connector.SendMessage("a");
-                mainActivity.connector.SendMessage("b");
+            //mainActivity.connector.SendMessage("a");
+            //mainActivity.connector.SendMessage("b");
+                textViewTempValue.Text = temp;
+                textViewHumiValue.Text = humi;
             };
-
+            
             return view;
         }
 
