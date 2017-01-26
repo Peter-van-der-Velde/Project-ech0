@@ -83,8 +83,8 @@ namespace Domotica
             editTextIPAddress = FindViewById<EditText>(Resource.Id.editTextIPAddress);
             editTextIPPort = FindViewById<EditText>(Resource.Id.editTextIPPort);
             textViewStandValue = FindViewById<TextView>(Resource.Id.textViewStandValue);
-            checkBoxStartCircuit = FindViewById<CheckBox>(Resource.Id.checkBoxStartCircuit);
             buttonActiveer = FindViewById<Button>(Resource.Id.buttonActiveer);
+            checkBoxStartCircuit = FindViewById<CheckBox>(Resource.Id.checkBoxStartCircuit);
 
             UpdateConnectionState(4, "Disconnected");
 

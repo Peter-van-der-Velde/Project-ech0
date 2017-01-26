@@ -83,14 +83,16 @@ namespace Domotica
                         //resulst from temp and hum command
                         if(result[0] == 't')
                         {
-                            mainActivity.temperature.textViewTempValue.Text = result[1] + "" + result[2];
+                            //mainActivity.temperature.textViewTempValue.Text = result[1] + "" + result[2];
+                            mainActivity.temperature.temp = result[1] + "" + result[2];
                         }
                         if (result[0] == 'h')
                         {
                             mainActivity.humidity.textViewHumiValue.Text = result[1] + "" + result[2];
                         }
+
                     }
-					Thread.Sleep (10);
+                    Thread.Sleep (10);
 				}
 			} catch (Exception exception) {
 				Console.WriteLine ("Receiver Error:" + exception.Message + ".");

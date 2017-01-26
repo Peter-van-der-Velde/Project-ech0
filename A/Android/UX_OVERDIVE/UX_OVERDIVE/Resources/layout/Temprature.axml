@@ -22,7 +22,8 @@
                 android:text="@string/temp_value"
                 android:padding="3dip"
                 android:id="@+id/textViewTempValue"
-                android:layout_marginRight="40dp" />
+                android:layout_marginRight="40dp"
+                android:width="50dp" />
         </TableRow>
         <TableRow
             android:layout_marginTop="30dp">
@@ -39,7 +40,8 @@
                 android:padding="3dip"
                 android:id="@+id/textViewHumiValue"
                 android:layout_marginRight="40dp"
-                android:text="@string/humi_value" />
+                android:text="@string/humi_value"
+                android:width="50dp" />
         </TableRow>
     </TableLayout>
 </FrameLayout>
