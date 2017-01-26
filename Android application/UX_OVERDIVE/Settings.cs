@@ -34,10 +34,7 @@ namespace UX_OVERDIVE
 
             ActionBar.SetHomeButtonEnabled(true);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
-            
-            //ActionBar.SetTitle(Html.FromHtml("<font color='#ff0000'>ActionBarTitle </font>", FromHtmlOptions.ModeLegacy));
 
-            //ActionBar.SetTitle();
             // Create your application here
             SetContentView(Resource.Layout.Settings);
 
