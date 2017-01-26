@@ -5,23 +5,23 @@
     android:layout_height="fill_parent"
     android:background="@color/backGround"
     android:textColor="@color/text">
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:scaleType="fitCenter"
-            android:background="?android:selectableItemBackground"
-            android:id="@+id/btnRecord"
-            android:layout_gravity="center"
-            android:src="@drawable/Microphone2"/>
-  <ImageButton
-     android:layout_width="30dp"
-     android:layout_height="30dp"
-     android:layout_gravity="bottom|right"
-     android:layout_margin="15dp"
-     android:scaleType="fitCenter"
-     android:adjustViewBounds="true"
-     android:background="?android:selectableItemBackground"
-     android:id="@+id/set_Bspeech"
-     android:src="@drawable/Settings" />
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/btnRecord"
+        android:layout_gravity="center"
+        android:src="@drawable/Microphone2" />
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/set_Bspeech"
+        android:src="@drawable/Settings" />
 </FrameLayout>
