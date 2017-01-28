@@ -1,14 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Speech;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
 
@@ -51,8 +44,7 @@ namespace UX_OVERDIVE
             }
             else
             {
-                rektButton.Click += xxXClicKXxx;
-                
+                rektButton.Click += RecordOnClick;
             }
 
             settingButton.Click += settingButton_Click;
@@ -60,10 +52,9 @@ namespace UX_OVERDIVE
             return view;
         }
 
-        private void xxXClicKXxx(object sender, EventArgs e)
+        private void RecordOnClick(object sender, EventArgs e)
         {
-            mainActivity.xxXTouwSlayerXxx();
-            //OVERDRIVE();
+            mainActivity.CreateVoiceIntent();
         }
 
         private void settingButton_Click(object sender, EventArgs e)

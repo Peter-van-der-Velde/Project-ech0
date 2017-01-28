@@ -10,14 +10,12 @@ namespace UX_OVERDIVE
     [Activity(Label = "TimeScript", Theme = "@style/MyCustomTheme")]
     public class TimeScript : Activity
     {
-        private TextView time_display;
-        //private Button pick_button;
-
         private int hour;
         private int minute;
 
         const int TIME_DIALOG_ID = 0;
 
+        private TextView time_display;
         private Button buttonCancel;
         private Button buttonSave;
 

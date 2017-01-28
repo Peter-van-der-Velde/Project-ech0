@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Timers;
@@ -43,18 +38,9 @@ namespace UX_OVERDIVE
             textViewTempValue = view.FindViewById<TextView>(Resource.Id.textViewTempValue);
             textViewHumiValue = view.FindViewById<TextView>(Resource.Id.textViewHumiValue);
 
-            //sets the text of the button
-            //.Text = "You clicked the button " + 0.ToString() + " times.";
-
-
-            //clicker.Click += clicker_Click;
-            //settingButton.Click += settingButton_Click;
-
             timerTemp = new System.Timers.Timer() { Interval = 2000, Enabled = true };
             timerTemp.Elapsed += (obj, args) =>
             {
-            //mainActivity.connector.SendMessage("a");
-            //mainActivity.connector.SendMessage("b");
                 textViewTempValue.Text = temp;
                 textViewHumiValue.Text = humi;
             };

@@ -84,23 +84,8 @@ namespace UX_OVERDIVE
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Home);
             AddTabToActionBar(Resource.String.empty, Resource.Drawable.Microphone);
 
-            //this.Title = (connector == null) ? this.Title + " (simple sockets)" : this.Title + " (thread sockets)";
-
             ISharedPreferences pref = Application.Context.GetSharedPreferences("Time", FileCreationMode.Private);
             
-            /*Timer temprand = new Timer() { Interval = 2000, Enabled = true };
-            temprand.Elapsed += (obj, args) =>
-            {
-                if (Convert.ToInt16(Home.temp) > 25)
-                {
-                    connector.SendMessage("t");
-                }
-                else if(Convert.ToInt16(Home.temp) < 22)
-                {
-                    connector.SendMessage("c");
-                }
-            };*/
-
             Timer clockTimer = new Timer() { Interval = 2000, Enabled = true };
             clockTimer.Elapsed += (obj, args) =>
             {
@@ -290,18 +275,7 @@ namespace UX_OVERDIVE
                 color = Color.Green;
                 butPinEnabled = true;
             }
-            //Edit the control's properties on the UI thread
-            /*RunOnUiThread(() =>
-            {
-                textViewServerConnect.Text = text;
-                if (butConText != null)  // text existst
-                {
-                    buttonConnect.Text = butConText;
-                    textViewServerConnect.SetTextColor(color);
-                    buttonConnect.Enabled = butConEnabled;
-                }
-                buttonChangePinState.Enabled = butPinEnabled;
-            });*/
+
         }
 
         //Update GUI based on Arduino response
@@ -383,16 +357,6 @@ namespace UX_OVERDIVE
             }
         }
 
-        ////Prepare the Screen's standard options menu to be displayed.
-        //public override bool OnPrepareOptionsMenu(IMenu menu)
-        //{
-        //    //Prevent menu items from being duplicated.
-        //    menu.Clear();
-
-        //    MenuInflater.Inflate(Resource.Menu.menu, menu);
-        //    return base.OnPrepareOptionsMenu(menu);
-        //}
-
         //Executes an action when a menu button is pressed.
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
@@ -448,7 +412,7 @@ namespace UX_OVERDIVE
             }
             else return false;
         }
-        public void xxXTouwSlayerXxx()
+        public void CreateVoiceIntent()
         {
             // change the text on the button or maybe not
             if (true)
@@ -501,7 +465,7 @@ namespace UX_OVERDIVE
                             // change the text back on the button;
                             //textInput = "No speech was recognised";
                             textSpeechInput = textInput;
-                            OVERDRIVE();
+                            SpeechInputToCommand();
                         }
 
 
@@ -519,7 +483,7 @@ namespace UX_OVERDIVE
         }
 
         // textSpeechString to commands
-        private void OVERDRIVE()
+        private void SpeechInputToCommand()
         {
             string speechCompleteString;
             bool boolOne = false;

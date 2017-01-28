@@ -1,19 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Timers;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Preferences;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Graphics;
 
 namespace UX_OVERDIVE
 {
